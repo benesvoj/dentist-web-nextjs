@@ -9,3 +9,14 @@ export type InsuranceCompaniesProps = {
     url: string
     logo: string
 }
+
+export type ServicesProps = {
+    title: string
+    description: string
+    image: string
+}
+
+export type UrlsProps = {
+    title: string
+    url?: string
+}

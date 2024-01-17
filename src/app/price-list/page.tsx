@@ -1,9 +1,9 @@
 import {PageBody} from "@/app/ui/PageBody";
 import {urls} from "@/app/lib/urls";
 
-export default function Contact() {
+export default function PriceList() {
     return(
-        <PageBody title={urls[6].title}>
+        <PageBody title={urls[2].title}>
 
         </PageBody>
     )

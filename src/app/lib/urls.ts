@@ -1,8 +1,10 @@
-export const urls = [
+import {UrlsProps} from "@/app/lib/types";
+
+export const urls: UrlsProps[] = [
     {title:'Uvod', url: '/'},
-    {title: 'Sluzby', url: '/services'},
-    {title: 'Cenik', url: '/price-list'},
-    {title: 'Doporucujeme', url: '/recommendation'},
+    {title: 'Služby', url: '/services'},
+    {title: 'Ceník', url: '/price-list'},
+    {title: 'Doporučujeme', url: '/recommendation'},
     {title: 'Nas tym', url: '/our-team'},
     {title: 'Spolupracujeme', url: '/cooperation'},
     {title: 'Kontakt', url: '/contact'},
