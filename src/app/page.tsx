@@ -1,14 +1,11 @@
 import Image from 'next/image'
 import {Card} from "@/app/ui/Card";
 import {OfficeHoursTable} from "@/app/ui/OfficeHoursTable";
-import {officeHours} from "@/app/lib/website";
+import {insuranceCompanies, officeHours} from "@/app/lib/website";
+import Link from "next/link";
 
 export default function Home() {
-    // console.log(typeof officeHours)
-    // console.log(officeHours)
     const data = Array.isArray(officeHours) ? officeHours : []
-    Array.isArray(officeHours) ? console.log('je array') : console.log('neni array')
-    // console.log(data)
 
     return (
         <>
@@ -30,9 +27,20 @@ export default function Home() {
                     informaci prostřednictvím SMS!</p>
             </Card>
             <Card heading={'Ordinační doba'}>
-                <OfficeHoursTable rows={data} />
+                <OfficeHoursTable rows={data}/>
                 <p className={'font-bold py-2'}>Provozní doba začíná hodinu před ordinační dobou.</p>
                 <p className={'font-bold'}>Omezený provoz ordinace z důvodu mateřské dovolené.</p>
+            </Card>
+            <Card heading={'Pojistovny'}>
+                <p>Ordinace je smluvním poskytovatelem pro všechny zdravotní pojišťovny.</p>
+                <div className={'flex flex-row flex-wrap gap-4 justify-center py-4 items-center'}>
+                    {insuranceCompanies.map(({title, url, logo}, index) => (
+                            <Link href={url} key={index} target='_blank'>
+                                <Image src={logo} alt={title} width={0} height={0} sizes={'50wh'} className="w-28 h-auto"/>
+                            </Link>
+                        )
+                    )}
+                </div>
             </Card>
         </>
     )

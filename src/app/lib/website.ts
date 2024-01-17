@@ -1,4 +1,4 @@
-import {OfficeHoursProps} from "@/app/lib/types";
+import {InsuranceCompaniesProps, OfficeHoursProps} from "@/app/lib/types";
 
 export const website = {
     address: 'E.Beneše 1, 747 05, Opava',
@@ -37,4 +37,37 @@ export const officeHours: OfficeHoursProps[] = [
         morning: 'Zavřeno',
         afternoon: 'Zavřeno'
     },
+]
+
+export const insuranceCompanies: InsuranceCompaniesProps[] = [
+    {
+        title: 'VZP',
+        url: 'https://www.vzp.cz/',
+        logo: '/poj-vzp.png'
+    },
+    {
+        title: 'ČPZP',
+        url: 'https://www.cpzp.cz/',
+        logo: '/poj-cpzp.png'
+    },
+    {
+        title: 'RBP',
+        url: 'https://www.rbp213.cz/',
+        logo: '/poj-rbp.jpeg'
+    },
+    {
+        title: 'OZP',
+        url: 'https://www.ozp.cz/',
+        logo: '/poj-ozp.png'
+    },
+    {
+        title: 'ZPMV',
+        url: 'https://www.zpmvcr.cz/',
+        logo: '/poj-zpmv.png'
+    },
+    {
+        title: 'VOZP',
+        url: 'https://www.vozp.cz/',
+        logo: '/poj-vozp.png'
+    }
 ]

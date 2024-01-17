@@ -7,15 +7,20 @@ interface OfficeHoursTableProps {
 export const OfficeHoursTable: React.FC<OfficeHoursTableProps> = ({ rows }) => {
     return (
         <table>
-            {rows.map(({day, morning, afternoon}, index) => {
+            <tbody>
+            {rows.length > 0
+            ? (rows.map(({day, morning, afternoon}, index) => {
                 return (
                     <tr key={index}>
-                        <th>{day}</th>
-                        <th>{morning ? morning : '-'}</th>
-                        <th>{afternoon ? afternoon : '-'}</th>
+                        <td>{day}</td>
+                        <td>{morning ? morning : '-'}</td>
+                        <td>{afternoon ? afternoon : '-'}</td>
                     </tr>
                 )
-            })}
+            }))
+                : (<tr><td>There are no office hours</td></tr>)
+            }
+            </tbody>
         </table>
     )
 }
