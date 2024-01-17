@@ -1,4 +1,10 @@
-import {InsuranceCompaniesProps, OfficeHoursProps, ServicesProps} from '@/app/lib/types'
+import {
+  EmployeeProps,
+  InsuranceCompaniesProps,
+  OfficeHoursProps,
+  PriceListProps,
+  ServicesProps,
+} from '@/app/lib/types'
 
 export const website = {
   address: 'E.Beneše 1, 747 05, Opava',
@@ -106,4 +112,80 @@ Cílem je pomocí nich ošetřit vlastní zuby a doplnit je tak, aby zůstala za
     description:
       'Extraorální snímkovací metoda. Snímek zachycující obě čelisti, chrup, čelistní klouby, čelistní dutiny a dutinu nosní. Zobrazuje horní i dolní zuby čelisti na jednom snímku. Zobrazuje počet, umístění a růst všech zubů, včetně těch, které se zatím plně nevyvinuly nebo v dutině ústní plně neprořezaly. Zobrazí nám obecný přehled o stavu všech přitomných zubů a kosti, v nichž jsou zuby ukotveny.',
   },
+]
+
+export const employees: EmployeeProps[] = [
+  {
+    name: 'MDDr. Lucie Solná',
+    position: 'zubní lékař',
+    description:
+      'Soustavné postgraduální vzdělávání, pravidelná účast na odborných kurzech a summitech.',
+    experience: [
+      {from: 2006, to: 2011, text: 'Masarykovova Univerzita v Brně, obor Zubní lékařství'},
+      {from: 2011, to: 2015, text: 'Zaměstnanec privátních zubních ordinací v Opavě a Kravařích'},
+      {
+        from: 2015,
+        to: 'dnes',
+        text: 'Převzetí soukromé stomatologické praxe po MUDr.Martě Černohorské, založení LS dent, s.r.o.',
+      },
+      {from: 2018, to: 'dnes', text: 'Zisk osvědčení „Praktický zubní lékař“'},
+    ],
+  },
+  {
+    name: 'MDDr. Jana Honová',
+    position: 'zubní lékař',
+    description:
+      'Soustavné postgraduální vzdělávání, pravidelná účast na odborných kurzech a summitech.',
+    experience: [
+      {from: 2010, to: 2015, text: 'Masarykovova Univerzita v Brně, obor Zubní lékařství'},
+      {from: 2016, to: 'dnes', text: 'Zaměstnanec privátní zubní ordinace v Opavě'},
+      {from: 2018, to: 'dnes', text: 'Zaměstnanec LS dent, s.r.o.'},
+    ],
+  },
+  {
+    name: 'Světlana Veverková',
+    position: 'sestra',
+    experience: [
+      {from: 1981, to: 1985, text: 'Střední zdravotnická škola Krnov, obor dětská sestra'},
+      {from: 1985, to: 2000, text: 'Kojenecký ústav Opava'},
+      {from: 2000, to: 2002, text: 'Zaměstnanec soukromé stomatologické ordinace MUDr.Vavrečka'},
+      {
+        from: 2002,
+        to: 2015,
+        text: 'Zaměstnanec soukromé stomatologické ordinace MUDr.Černohorská',
+      },
+      {from: 2015, to: 2018, text: 'Zaměstnanec soukromé stomatologické ordinace MUDr.Rybová'},
+      {
+        from: 2018,
+        to: 'dnes',
+        text: 'Zaměstnanec soukromé stomatologické ordinace LS dent, s.r.o.',
+      },
+    ],
+  },
+]
+
+export const priceList: PriceListProps[] = [
+  {title: 'Vstupní vyšetření', price: 'Hrazeno ZP'},
+  {title: 'Preventivní prohlídka (1x ročně dospělí, 2x ročně děti)', price: 'Hrazeno ZP'},
+  {title: 'Digitalní snímkování RTG a OPG', price: 'Hrazeno ZP'},
+  {title: 'Vyhodnocení snímků', price: 'Hrazeno ZP'},
+  {title: 'Lokální anestezie', price: 'Hrazeno ZP'},
+  {title: 'Konzultace', price: 'od 300 Kč'},
+  {title: 'Fotokompozitní(bílé) výplně', price: 'od 1 100 Kč'},
+  {title: 'Skloionomerní výplně', price: 'od 500 Kč'},
+  {title: 'Kapslový amalgám (černá výplň)', price: 'Hrazeno ZP'},
+  {title: 'Endodoncie (ošetření kořenových kanálků)', price: 'od 1 000 Kč'},
+  {title: 'Kofferdam', price: '200 Kč'},
+  {title: 'Celokeramická korunka', price: 'od 4 300 Kč'},
+  {title: 'Metalokeramická korunka', price: 'od 4 500 Kč'},
+  {title: 'Fazetová korunka', price: ''},
+  {title: 'Provizorní korunka', price: 'od 1 000 Kč'},
+  {title: 'Provizorní můstek', price: 'od 4 000 Kč'},
+  {title: 'Provizorní snímací protéza', price: 'od 4 500 Kč'},
+  {title: 'Snímací protéza', price: 'od 5 500 Kč'},
+  {title: 'Domácí bělení', price: 'od 4 000 Kč'},
+  {title: 'Vnitřní bělení', price: 'od 1 000 Kč'},
+  {title: 'Kolagenová dentální kuželka', price: '200 Kč'},
+  {title: 'Kolagenová dentální kuželka s ATB', price: '400 Kč'},
+  {title: 'Chirurgické šití', price: '200 Kč'},
 ]
