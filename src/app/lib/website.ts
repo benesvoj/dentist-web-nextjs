@@ -1,4 +1,5 @@
 import {
+  CooperationProps,
   EmployeeProps,
   InsuranceCompaniesProps,
   OfficeHoursProps,
@@ -188,4 +189,71 @@ export const priceList: PriceListProps[] = [
   {title: 'Kolagenová dentální kuželka', price: '200 Kč'},
   {title: 'Kolagenová dentální kuželka s ATB', price: '400 Kč'},
   {title: 'Chirurgické šití', price: '200 Kč'},
+]
+
+export const cooperation: CooperationProps[] = [
+  {
+    type: 'lab',
+    title: 'Tomáš Onderka',
+    description: 'fixní protetické práce',
+    address: 'Švermova 219, Vítkov 749 01',
+    phone: '+420 773 998 181',
+    email: 'tomas.onderka.zl@gmail.com',
+    www: 'www.tomasonderka.com',
+  },
+  {
+    type: 'lab',
+    title: 'Ivana Stiborská',
+    description: 'snímatelné protetické práce',
+    address: 'E.Beneše 1, Opava 747 05',
+    phone: '+420 553 627 828',
+  },
+  {
+    type: 'lab',
+    title: 'Blažena Vokřálová',
+    description: 'snímatelné protetické práce',
+    address: 'Partyzánská 229, Budišov nad Budišovkou 747 87',
+    phone: '+420 604 593 322',
+  },
+  {
+    type: 'stoma',
+    title: 'Zubní chirurgie s.r.o.',
+    description: 'chirurgické výkony',
+    address: 'Slezská nemocnice Opava, Olomoucká 470/86, Opava 746 01',
+    phone: '+420 773 998 181',
+    www: 'www.zchopava.cz',
+  },
+  {
+    type: 'orto',
+    title: 'BellaDente',
+    description: 'MUDr. Zdeněk Micek, ml.',
+    address: 'Nám.republiky 198/2, Opava 746 01',
+    phone: '+420 725 393 141',
+    email: 'info@belladente.cz',
+    www: 'www.belladente.cz',
+  },
+  {
+    type: 'orto',
+    title: 'MUDr. Martina Gebauerová',
+    address: 'Rolnická 1A, Opava 747 05',
+    phone: '+420 777 509 995',
+    email: 'info@ortodoncie-opava.cz',
+    www: 'www.ortodoncie-opava.cz',
+  },
+  {
+    type: 'para',
+    title: 'MUDr. Jitka Fischerová',
+    address: 'Žižkova 8, Opava 746 01',
+    phone: '+420 606 049 442',
+    email: 'info@zubaropava.cz',
+    www: 'www.zubaropava.cz',
+  },
+  {
+    type: 'dentalhygiene',
+    title: 'Bc. Ilona Cabadajová',
+    address: 'Nám.slezského odboje 1540/3, Opava 746 01',
+    phone: '+420 799 797 300',
+    email: 'info@dhopava.cz',
+    www: 'www.dhopava.cz',
+  },
 ]

@@ -39,3 +39,13 @@ export type PriceListProps = {
   title: string
   price: string
 }
+
+export type CooperationProps = {
+  type: 'lab' | 'orto' | 'stoma' | 'para' | 'dentalhygiene'
+  title: string
+  description?: string
+  address: string
+  phone?: string
+  email?: string
+  www?: string
+}
