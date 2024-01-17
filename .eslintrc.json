@@ -1,3 +1,9 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": ["next/core-web-vitals", "next", "prettier"],
+  "rules": {
+    "semi": ["warn", "never"],
+    "quotes": ["error", "single"],
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-uses-react": "off"
+  }
 }
