@@ -4,9 +4,12 @@ import {OfficeHoursTable} from "@/app/ui/OfficeHoursTable";
 import {officeHours} from "@/app/lib/website";
 
 export default function Home() {
-    console.log(typeof officeHours)
-    console.log(officeHours)
-    console.log(Array.isArray(officeHours))
+    // console.log(typeof officeHours)
+    // console.log(officeHours)
+    const data = Array.isArray(officeHours) ? officeHours : []
+    Array.isArray(officeHours) ? console.log('je array') : console.log('neni array')
+    // console.log(data)
+
     return (
         <>
             <div
@@ -27,7 +30,7 @@ export default function Home() {
                     informaci prostřednictvím SMS!</p>
             </Card>
             <Card heading={'Ordinační doba'}>
-                <OfficeHoursTable rows={officeHours} />
+                <OfficeHoursTable rows={data} />
                 <p className={'font-bold py-2'}>Provozní doba začíná hodinu před ordinační dobou.</p>
                 <p className={'font-bold'}>Omezený provoz ordinace z důvodu mateřské dovolené.</p>
             </Card>

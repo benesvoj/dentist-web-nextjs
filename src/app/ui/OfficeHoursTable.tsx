@@ -1,8 +1,10 @@
 import {OfficeHoursProps} from "@/app/lib/types";
 
-export const OfficeHoursTable = (rows: OfficeHoursProps[]) => {
-    // console.log(typeof officeHours)
-    // console.log(officeHours)
+interface OfficeHoursTableProps {
+    rows: OfficeHoursProps[];
+}
+
+export const OfficeHoursTable: React.FC<OfficeHoursTableProps> = ({ rows }) => {
     return (
         <table>
             {rows.map(({day, morning, afternoon}, index) => {
