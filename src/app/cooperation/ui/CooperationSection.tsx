@@ -2,6 +2,7 @@ import {cooperation} from '@/app/lib/website'
 import {PersonCard} from '@/app/cooperation/ui/PersonCard'
 import React from 'react'
 import {CooperationProps, CooperationTypeEnum} from '@/app/lib/types'
+import Image from 'next/image'
 
 type CooperationSectionProps = {
   title: string
@@ -9,7 +10,20 @@ type CooperationSectionProps = {
   type: CooperationTypeEnum
 }
 
-const Heading = ({children}: {children: React.ReactNode}) => <h3 className={'my-4'}>{children}</h3>
+const Heading = ({children}: {children: React.ReactNode}) => {
+  return (
+    <>
+      <h3 className={'mt-8 text-center text-2xl font-semibold'}>{children}</h3>
+      <div className="inline-flex items-center justify-center w-full">
+        <hr className="w-64 h-1 my-8 bg-black border-0 rounded dark:bg-gray-700" />
+        <div className="px-4">
+          <Image src={'/tooth-solid.svg'} alt={'Tooth'} width={24} height={24} />
+        </div>
+        <hr className="w-64 h-1 my-8 bg-black border-0 rounded dark:bg-gray-700" />
+      </div>
+    </>
+  )
+}
 
 export const CooperationSection = ({title, data, type}: CooperationSectionProps) => {
   return (
@@ -30,6 +44,7 @@ export const CooperationSection = ({title, data, type}: CooperationSectionProps)
             />
           ))}
       </div>
+      ;
     </>
   )
 }
