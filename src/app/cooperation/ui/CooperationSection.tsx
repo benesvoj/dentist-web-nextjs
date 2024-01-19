@@ -15,7 +15,7 @@ export const CooperationSection = ({title, data, type}: CooperationSectionProps)
   return (
     <>
       <Heading>{title}</Heading>
-      <div className={'flex space-x-4'}>
+      <div className={'flex gap-4'}>
         {data
           .filter((item) => item.type === type)
           .map((item, index) => (
