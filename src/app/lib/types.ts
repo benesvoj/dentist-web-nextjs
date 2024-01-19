@@ -40,12 +40,20 @@ export type PriceListProps = {
   price: string
 }
 
+export type CooperationTypeEnum = 'lab' | 'orto' | 'stoma' | 'para' | 'dentalhygiene'
+
 export type CooperationProps = {
-  type: 'lab' | 'orto' | 'stoma' | 'para' | 'dentalhygiene'
+  type: CooperationTypeEnum
   title: string
   description?: string
   address: string
   phone?: string
   email?: string
   www?: string
+}
+
+export type CooperationConfigProps = {
+  title: string
+  data: CooperationProps[]
+  type: CooperationTypeEnum
 }

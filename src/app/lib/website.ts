@@ -1,4 +1,5 @@
 import {
+  CooperationConfigProps,
   CooperationProps,
   EmployeeProps,
   InsuranceCompaniesProps,
@@ -6,6 +7,8 @@ import {
   PriceListProps,
   ServicesProps,
 } from '@/app/lib/types'
+import {CooperationSection} from '@/app/cooperation/ui/CooperationSection'
+import React from 'react'
 
 export const website = {
   address: 'E.Beneše 1, 747 05, Opava',
@@ -256,4 +259,12 @@ export const cooperation: CooperationProps[] = [
     email: 'info@dhopava.cz',
     www: 'www.dhopava.cz',
   },
+]
+
+export const CooperationConfig: CooperationConfigProps[] = [
+  {title: 'Laboratoře', data: cooperation, type: 'lab'},
+  {title: 'Stomatochirurgie', data: cooperation, type: 'stoma'},
+  {title: 'Ortodoncie', data: cooperation, type: 'orto'},
+  {title: 'Paradontologie', data: cooperation, type: 'para'},
+  {title: 'Dentální hygiena', data: cooperation, type: 'dentalhygiene'},
 ]
