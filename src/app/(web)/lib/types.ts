@@ -21,7 +21,7 @@ export type UrlsProps = {
   url?: string
 }
 
-type ExpressionsProps = {
+export type ExperienceProps = {
   from: string | number
   to: string | number
   text: string
@@ -30,7 +30,7 @@ type ExpressionsProps = {
 export type EmployeeProps = {
   name: string
   position: 'zubní lékař' | 'zubní hygienistka' | 'sestra'
-  experience?: ExpressionsProps[]
+  experience?: ExperienceProps[]
   description?: string
   image?: string
 }

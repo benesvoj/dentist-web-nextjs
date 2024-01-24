@@ -1,4 +1,4 @@
-import {OfficeHoursProps} from '@/app/lib/types'
+import {OfficeHoursProps} from '@/app/(web)/lib/types'
 
 interface OfficeHoursTableProps {
   rows: OfficeHoursProps[]

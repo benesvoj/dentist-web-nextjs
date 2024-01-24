@@ -1,7 +1,7 @@
-import {urls} from '@/app/lib/urls'
-import {services} from '@/app/lib/website'
+import {urls} from '@/app/(web)/lib/urls'
+import {services} from '@/app/(web)/lib/website'
 import Image from 'next/image'
-import {PageBody} from '@/app/ui/PageBody'
+import {PageBody} from '@/app/(web)/ui/PageBody'
 
 export default function Contact() {
   const imageFilter =

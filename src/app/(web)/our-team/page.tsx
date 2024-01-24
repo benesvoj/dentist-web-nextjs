@@ -1,7 +1,8 @@
-import {PageBody} from '@/app/ui/PageBody'
-import {urls} from '@/app/lib/urls'
-import {employees} from '@/app/lib/website'
-import {Card} from '@/app/ui/Card'
+import {PageBody} from '@/app/(web)/ui/PageBody'
+import {urls} from '@/app/(web)/lib/urls'
+import {employees} from '@/app/(web)/lib/website'
+import {Card} from '@/app/(web)/ui/Card'
+import {ExperienceProps} from '@/app/(web)/lib/types'
 
 export default function OurTeam() {
   return (
@@ -14,16 +15,15 @@ export default function OurTeam() {
             <Card heading={employee.name} avatar={'/user-doctor-solid.svg'} key={index}>
               <div>{employee.position}</div>
               <div>
-                {employee.experience
-                  ? employee.experience?.map((experience, index) => (
-                      <div key={index} className={'flex space-x-4'}>
-                        <div className={'text-sm'}>
-                          {experience.from} - {experience.to}
-                        </div>
-                        <div className={'text-sm'}>{experience.text}</div>
+                {employee.experience.length > 0 &&
+                  employee.experience?.map((experience: ExperienceProps, index: number) => (
+                    <div key={index} className={'flex space-x-4'}>
+                      <div className={'text-sm'}>
+                        {experience.from} - {experience.to}
                       </div>
-                    ))
-                  : null}
+                      <div className={'text-sm'}>{experience.text}</div>
+                    </div>
+                  ))}
               </div>
               <div>{employee.description}</div>
             </Card>
@@ -38,7 +38,7 @@ export default function OurTeam() {
               <div>{employee.position}</div>
               <div>
                 {employee.experience
-                  ? employee.experience?.map((experience, index) => (
+                  ? employee.experience?.map((experience: ExperienceProps, index: number) => (
                       <div key={index} className={'flex space-x-4'}>
                         <div className={'text-sm'}>
                           {experience.from} - {experience.to}

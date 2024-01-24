@@ -1,7 +1,7 @@
 import Image from 'next/image'
-import {Card} from '@/app/ui/Card'
-import {OfficeHoursTable} from '@/app/ui/OfficeHoursTable'
-import {insuranceCompanies, officeHours} from '@/app/lib/website'
+import {Card} from '@/app/(web)/ui/Card'
+import {OfficeHoursTable} from '@/app/(web)/ui/OfficeHoursTable'
+import {insuranceCompanies, officeHours} from '@/app/(web)/lib/website'
 import Link from 'next/link'
 
 export default function Home() {

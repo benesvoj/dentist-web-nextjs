@@ -1,4 +1,4 @@
-import {PageHeading} from '@/app/ui/PageHeading'
+import {PageHeading} from '@/app/(web)/ui/PageHeading'
 
 type PageBodyProps = {
   title: string

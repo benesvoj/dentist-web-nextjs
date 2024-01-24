@@ -1,6 +1,6 @@
-import {PersonCard} from '@/app/cooperation/ui/PersonCard'
+import {PersonCard} from '@/app/(web)/cooperation/ui/PersonCard'
 import React from 'react'
-import {CooperationProps, CooperationTypeEnum} from '@/app/lib/types'
+import {CooperationProps, CooperationTypeEnum} from '@/app/(web)/lib/types'
 import Image from 'next/image'
 
 type CooperationSectionProps = {

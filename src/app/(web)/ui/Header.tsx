@@ -1,8 +1,7 @@
-import Image from 'next/image'
-import {Logo} from '@/app/ui/Logo'
-import {urls} from '@/app/lib/urls'
+import {Logo} from '@/app/(web)/ui/Logo'
+import {urls} from '@/app/(web)/lib/urls'
 import Link from 'next/link'
-import {website} from '@/app/lib/website'
+import {website} from '@/app/(web)/lib/website'
 
 export const Header = () => {
   return (

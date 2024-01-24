@@ -1,7 +1,7 @@
-import {PageBody} from '@/app/ui/PageBody'
-import {urls} from '@/app/lib/urls'
-import {priceList} from '@/app/lib/website'
-import {Card} from '@/app/ui/Card'
+import {PageBody} from '@/app/(web)/ui/PageBody'
+import {urls} from '@/app/(web)/lib/urls'
+import {priceList} from '@/app/(web)/lib/website'
+import {Card} from '@/app/(web)/ui/Card'
 
 export default function PriceList() {
   const cellStyle = 'py-1.5'

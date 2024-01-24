@@ -1,8 +1,8 @@
-import {PageBody} from '@/app/ui/PageBody'
-import {urls} from '@/app/lib/urls'
-import {CooperationConfig} from '@/app/lib/website'
+import {PageBody} from '@/app/(web)/ui/PageBody'
+import {urls} from '@/app/(web)/lib/urls'
+import {CooperationConfig} from '@/app/(web)/lib/website'
 import React from 'react'
-import {CooperationSection} from '@/app/cooperation/ui/CooperationSection'
+import {CooperationSection} from '@/app/(web)/cooperation/ui/CooperationSection'
 
 export default function Cooperation() {
   return (
