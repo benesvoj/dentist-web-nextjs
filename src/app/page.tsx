@@ -5,7 +5,7 @@ import {insuranceCompanies, officeHours} from '@/app/lib/website'
 import Link from 'next/link'
 
 export default function Home() {
-  const data = Array.isArray(officeHours) ? officeHours : []
+  const data = officeHours ? officeHours : []
 
   return (
     <>

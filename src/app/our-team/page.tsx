@@ -11,7 +11,7 @@ export default function OurTeam() {
         {employees
           .filter((employee) => employee.position === 'zubní lékař')
           .map((employee, index) => (
-            <Card heading={employee.name} key={index}>
+            <Card heading={employee.name} avatar={'/user-doctor-solid.svg'} key={index}>
               <div>{employee.position}</div>
               <div>
                 {employee.experience

@@ -1,4 +1,3 @@
-import {cooperation} from '@/app/lib/website'
 import {PersonCard} from '@/app/cooperation/ui/PersonCard'
 import React from 'react'
 import {CooperationProps, CooperationTypeEnum} from '@/app/lib/types'
