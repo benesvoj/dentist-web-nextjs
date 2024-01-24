@@ -3,7 +3,7 @@ import {services} from '@/app/(web)/lib/website'
 import Image from 'next/image'
 import {PageBody} from '@/app/(web)/ui/PageBody'
 
-export default function Contact() {
+export default function Services() {
   const imageFilter =
     'invert(82%) sepia(59%) saturate(507%) hue-rotate(4deg) brightness(89%) contrast(88%)'
 
