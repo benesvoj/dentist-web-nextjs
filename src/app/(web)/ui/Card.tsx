@@ -8,9 +8,9 @@ type CardProps = {
 
 export const Card = ({children, heading, avatar}: CardProps) => {
   const cardStyle =
-    'bg-white overflow-hidden shadow rounded-lg w-auto dark:border-neutral-800 dark:bg-zinc-800/30 ' +
+    'bg-white overflow-hidden shadow rounded-lg w-96 dark:border-neutral-800 dark:bg-zinc-800/30 ' +
     'dark:from-inherit h-fit border border-transparent transition-colors hover:border-gray-300 ' +
-    'hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30 w-96'
+    'hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30 dark:text-slate-300'
 
   return (
     <div className={cardStyle}>
