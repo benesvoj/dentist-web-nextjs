@@ -4,6 +4,15 @@ import Image from 'next/image'
 import {Card} from '@/app/(web)/ui/Card'
 
 export const InsuranceCompaniesBar = () => {
+
+  // filter={"grayscale(1)"}
+  // transition={"filter 0.5s"}
+  // _hover={{
+  //   filter: "grayscale(0)",
+  // }}
+
+  const imageFilter = 'grayScale(1)'
+
   return (
     <Card heading={'Pojišťovny'}>
       <p>Ordinace je smluvním poskytovatelem pro tyto zdravotní pojišťovny.</p>
@@ -16,7 +25,7 @@ export const InsuranceCompaniesBar = () => {
               width={0}
               height={0}
               sizes={'50wh'}
-              className="w-28 h-auto"
+              className="w-28 h-auto filter grayscale hover:filter-none"
             />
           </Link>
         ))}

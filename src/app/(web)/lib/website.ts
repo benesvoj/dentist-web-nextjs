@@ -51,7 +51,7 @@ export const insuranceCompanies: InsuranceCompaniesProps[] = [
   {
     title: 'VZP',
     url: 'https://www.vzp.cz/',
-    logo: '/poj-vzp.png',
+    logo: '/poj-vzp.svg',
   },
   {
     title: 'ČPZP',
@@ -61,7 +61,7 @@ export const insuranceCompanies: InsuranceCompaniesProps[] = [
   {
     title: 'RBP',
     url: 'https://www.rbp213.cz/',
-    logo: '/poj-rbp.jpeg',
+    logo: '/poj-rbp_reverse.jpg',
   },
   {
     title: 'OZP',
