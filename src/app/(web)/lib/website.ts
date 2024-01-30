@@ -6,9 +6,7 @@ import {
   OfficeHoursProps,
   PriceListProps,
   ServicesProps,
-} from '@/app/lib/types'
-import {CooperationSection} from '@/app/cooperation/ui/CooperationSection'
-import React from 'react'
+} from '@/app/(web)/lib/types'
 
 export const website = {
   address: 'E.Beneše 1, 747 05, Opava',
@@ -120,46 +118,52 @@ Cílem je pomocí nich ošetřit vlastní zuby a doplnit je tak, aby zůstala za
 
 export const employees: EmployeeProps[] = [
   {
+    id: '1',
     name: 'MDDr. Lucie Solná',
     position: 'zubní lékař',
     description:
       'Soustavné postgraduální vzdělávání, pravidelná účast na odborných kurzech a summitech.',
     experience: [
-      {from: 2006, to: 2011, text: 'Masarykovova Univerzita v Brně, obor Zubní lékařství'},
-      {from: 2011, to: 2015, text: 'Zaměstnanec privátních zubních ordinací v Opavě a Kravařích'},
+      {id: '1', from: 2006, to: 2011, text: 'Masarykovova Univerzita v Brně, obor Zubní lékařství'},
+      {id: '2', from: 2011, to: 2015, text: 'Zaměstnanec privátních zubních ordinací v Opavě a Kravařích'},
       {
+        id: '3',
         from: 2015,
         to: 'dnes',
         text: 'Převzetí soukromé stomatologické praxe po MUDr.Martě Černohorské, založení LS dent, s.r.o.',
       },
-      {from: 2018, to: 'dnes', text: 'Zisk osvědčení „Praktický zubní lékař“'},
+      {id: '4', from: 2018, to: 'dnes', text: 'Zisk osvědčení „Praktický zubní lékař“'},
     ],
   },
   {
+    id: '2',
     name: 'MDDr. Jana Honová',
     position: 'zubní lékař',
     description:
       'Soustavné postgraduální vzdělávání, pravidelná účast na odborných kurzech a summitech.',
     experience: [
-      {from: 2010, to: 2015, text: 'Masarykovova Univerzita v Brně, obor Zubní lékařství'},
-      {from: 2016, to: 'dnes', text: 'Zaměstnanec privátní zubní ordinace v Opavě'},
-      {from: 2018, to: 'dnes', text: 'Zaměstnanec LS dent, s.r.o.'},
+      {id: '1', from: 2010, to: 2015, text: 'Masarykovova Univerzita v Brně, obor Zubní lékařství'},
+      {id: '2', from: 2016, to: 'dnes', text: 'Zaměstnanec privátní zubní ordinace v Opavě'},
+      {id: '3', from: 2018, to: 'dnes', text: 'Zaměstnanec LS dent, s.r.o.'},
     ],
   },
   {
+    id: '3',
     name: 'Světlana Veverková',
     position: 'sestra',
     experience: [
-      {from: 1981, to: 1985, text: 'Střední zdravotnická škola Krnov, obor dětská sestra'},
-      {from: 1985, to: 2000, text: 'Kojenecký ústav Opava'},
-      {from: 2000, to: 2002, text: 'Zaměstnanec soukromé stomatologické ordinace MUDr.Vavrečka'},
+      {id: '1', from: 1981, to: 1985, text: 'Střední zdravotnická škola Krnov, obor dětská sestra'},
+      {id: '2', from: 1985, to: 2000, text: 'Kojenecký ústav Opava'},
+      {id: '3', from: 2000, to: 2002, text: 'Zaměstnanec soukromé stomatologické ordinace MUDr.Vavrečka'},
       {
+        id: '4',
         from: 2002,
         to: 2015,
         text: 'Zaměstnanec soukromé stomatologické ordinace MUDr.Černohorská',
       },
-      {from: 2015, to: 2018, text: 'Zaměstnanec soukromé stomatologické ordinace MUDr.Rybová'},
+      {id: '5', from: 2015, to: 2018, text: 'Zaměstnanec soukromé stomatologické ordinace MUDr.Rybová'},
       {
+        id: '6',
         from: 2018,
         to: 'dnes',
         text: 'Zaměstnanec soukromé stomatologické ordinace LS dent, s.r.o.',
@@ -169,33 +173,34 @@ export const employees: EmployeeProps[] = [
 ]
 
 export const priceList: PriceListProps[] = [
-  {title: 'Vstupní vyšetření', price: 'Hrazeno ZP'},
-  {title: 'Preventivní prohlídka (1x ročně dospělí, 2x ročně děti)', price: 'Hrazeno ZP'},
-  {title: 'Digitalní snímkování RTG a OPG', price: 'Hrazeno ZP'},
-  {title: 'Vyhodnocení snímků', price: 'Hrazeno ZP'},
-  {title: 'Lokální anestezie', price: 'Hrazeno ZP'},
-  {title: 'Konzultace', price: 'od 300 Kč'},
-  {title: 'Fotokompozitní(bílé) výplně', price: 'od 1 100 Kč'},
-  {title: 'Skloionomerní výplně', price: 'od 500 Kč'},
-  {title: 'Kapslový amalgám (černá výplň)', price: 'Hrazeno ZP'},
-  {title: 'Endodoncie (ošetření kořenových kanálků)', price: 'od 1 000 Kč'},
-  {title: 'Kofferdam', price: '200 Kč'},
-  {title: 'Celokeramická korunka', price: 'od 4 300 Kč'},
-  {title: 'Metalokeramická korunka', price: 'od 4 500 Kč'},
-  {title: 'Fazetová korunka', price: ''},
-  {title: 'Provizorní korunka', price: 'od 1 000 Kč'},
-  {title: 'Provizorní můstek', price: 'od 4 000 Kč'},
-  {title: 'Provizorní snímací protéza', price: 'od 4 500 Kč'},
-  {title: 'Snímací protéza', price: 'od 5 500 Kč'},
-  {title: 'Domácí bělení', price: 'od 4 000 Kč'},
-  {title: 'Vnitřní bělení', price: 'od 1 000 Kč'},
-  {title: 'Kolagenová dentální kuželka', price: '200 Kč'},
-  {title: 'Kolagenová dentální kuželka s ATB', price: '400 Kč'},
-  {title: 'Chirurgické šití', price: '200 Kč'},
+  {id: '1', title: 'Vstupní vyšetření', price: 'Hrazeno ZP'},
+  {id: '2', title: 'Preventivní prohlídka (1x ročně dospělí, 2x ročně děti)', price: 'Hrazeno ZP'},
+  {id: '3', title: 'Digitalní snímkování RTG a OPG', price: 'Hrazeno ZP'},
+  {id: '4', title: 'Vyhodnocení snímků', price: 'Hrazeno ZP'},
+  {id: '5', title: 'Lokální anestezie', price: 'Hrazeno ZP'},
+  {id: '6', title: 'Konzultace', price: 'od 300 Kč'},
+  {id: '7', title: 'Fotokompozitní(bílé) výplně', price: 'od 1 100 Kč'},
+  {id: '8', title: 'Skloionomerní výplně', price: 'od 500 Kč'},
+  {id: '9', title: 'Kapslový amalgám (černá výplň)', price: 'Hrazeno ZP'},
+  {id: '10', title: 'Endodoncie (ošetření kořenových kanálků)', price: 'od 1 000 Kč'},
+  {id: '11', title: 'Kofferdam', price: '200 Kč'},
+  {id: '12', title: 'Celokeramická korunka', price: 'od 4 300 Kč'},
+  {id: '13', title: 'Metalokeramická korunka', price: 'od 4 500 Kč'},
+  {id: '14', title: 'Fazetová korunka', price: ''},
+  {id: '15', title: 'Provizorní korunka', price: 'od 1 000 Kč'},
+  {id: '16', title: 'Provizorní můstek', price: 'od 4 000 Kč'},
+  {id: '17', title: 'Provizorní snímací protéza', price: 'od 4 500 Kč'},
+  {id: '18', title: 'Snímací protéza', price: 'od 5 500 Kč'},
+  {id: '19', title: 'Domácí bělení', price: 'od 4 000 Kč'},
+  {id: '20', title: 'Vnitřní bělení', price: 'od 1 000 Kč'},
+  {id: '21', title: 'Kolagenová dentální kuželka', price: '200 Kč'},
+  {id: '22', title: 'Kolagenová dentální kuželka s ATB', price: '400 Kč'},
+  {id: '23', title: 'Chirurgické šití', price: '200 Kč'},
 ]
 
 export const cooperation: CooperationProps[] = [
   {
+    id: '1',
     type: 'lab',
     title: 'Tomáš Onderka',
     description: 'fixní protetické práce',
@@ -205,6 +210,7 @@ export const cooperation: CooperationProps[] = [
     www: 'www.tomasonderka.com',
   },
   {
+    id: '2',
     type: 'lab',
     title: 'Ivana Stiborská',
     description: 'snímatelné protetické práce',
@@ -212,6 +218,7 @@ export const cooperation: CooperationProps[] = [
     phone: '+420 553 627 828',
   },
   {
+    id: '3',
     type: 'lab',
     title: 'Blažena Vokřálová',
     description: 'snímatelné protetické práce',
@@ -219,6 +226,7 @@ export const cooperation: CooperationProps[] = [
     phone: '+420 604 593 322',
   },
   {
+    id: '4',
     type: 'stoma',
     title: 'Zubní chirurgie s.r.o.',
     description: 'chirurgické výkony',
@@ -227,6 +235,7 @@ export const cooperation: CooperationProps[] = [
     www: 'www.zchopava.cz',
   },
   {
+    id: '5',
     type: 'orto',
     title: 'BellaDente',
     description: 'MUDr. Zdeněk Micek, ml.',
@@ -236,6 +245,7 @@ export const cooperation: CooperationProps[] = [
     www: 'www.belladente.cz',
   },
   {
+    id: '6',
     type: 'orto',
     title: 'MUDr. Martina Gebauerová',
     address: 'Rolnická 1A, Opava 747 05',
@@ -244,6 +254,7 @@ export const cooperation: CooperationProps[] = [
     www: 'www.ortodoncie-opava.cz',
   },
   {
+    id: '7',
     type: 'para',
     title: 'MUDr. Jitka Fischerová',
     address: 'Žižkova 8, Opava 746 01',
@@ -252,6 +263,7 @@ export const cooperation: CooperationProps[] = [
     www: 'www.zubaropava.cz',
   },
   {
+    id: '8',
     type: 'dentalhygiene',
     title: 'Bc. Ilona Cabadajová',
     address: 'Nám.slezského odboje 1540/3, Opava 746 01',
@@ -262,9 +274,9 @@ export const cooperation: CooperationProps[] = [
 ]
 
 export const CooperationConfig: CooperationConfigProps[] = [
-  {title: 'Laboratoře', data: cooperation, type: 'lab'},
-  {title: 'Stomatochirurgie', data: cooperation, type: 'stoma'},
-  {title: 'Ortodoncie', data: cooperation, type: 'orto'},
-  {title: 'Paradontologie', data: cooperation, type: 'para'},
-  {title: 'Dentální hygiena', data: cooperation, type: 'dentalhygiene'},
+  {id: '1', title: 'Laboratoře', data: cooperation, type: 'lab'},
+  {id: '2', title: 'Stomatochirurgie', data: cooperation, type: 'stoma'},
+  {id: '3', title: 'Ortodoncie', data: cooperation, type: 'orto'},
+  {id: '4', title: 'Paradontologie', data: cooperation, type: 'para'},
+  {id: '5', title: 'Dentální hygiena', data: cooperation, type: 'dentalhygiene'},
 ]

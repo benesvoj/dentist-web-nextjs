@@ -15,9 +15,9 @@ export default function PriceList() {
           </tr>
         </thead>
         <tbody>
-          {priceList.map(({title, price}, index) => {
+          {priceList.map(({id, title, price}) => {
             return (
-              <tr key={index}>
+              <tr key={id}>
                 <td className={cellStyle}>{title}</td>
                 <td className={cellStyle}>{price}</td>
               </tr>

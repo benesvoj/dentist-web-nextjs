@@ -11,19 +11,20 @@ export default function OurTeam() {
       <div className={'flex space-x-4 w-full'}>
         {employees
           .filter((employee) => employee.position === 'zubní lékař')
-          .map((employee, index) => (
-            <Card heading={employee.name} avatar={'/user-doctor-solid.svg'} key={index}>
+          .map((employee) => (
+            <Card heading={employee.name} avatar={'/user-doctor-solid.svg'} key={employee.id}>
               <div>{employee.position}</div>
               <div>
-                {employee.experience.length > 0 &&
-                  employee.experience?.map((experience: ExperienceProps, index: number) => (
-                    <div key={index} className={'flex space-x-4'}>
+                {employee.experience ?
+                  employee.experience?.map((experience: ExperienceProps) => (
+                    <div key={experience.id} className={'flex space-x-4'}>
                       <div className={'text-sm'}>
                         {experience.from} - {experience.to}
                       </div>
                       <div className={'text-sm'}>{experience.text}</div>
                     </div>
-                  ))}
+                  ))
+                : null}
               </div>
               <div>{employee.description}</div>
             </Card>

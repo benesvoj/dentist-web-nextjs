@@ -23,13 +23,13 @@ export const Header = () => {
         </div>
       </div>
       <nav className="flex justify-between p-5">
-        {urls.map((item, index) => (
+        {urls.map(({id, url, title}) => (
           <Link
             className="p-2 rounded hover:underline hover:underline-offset-4"
-            key={index}
-            href={item.url}
+            key={id}
+            href={url || '/'}
           >
-            {item.title}
+            {title}
           </Link>
         ))}
       </nav>

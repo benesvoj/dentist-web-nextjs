@@ -31,9 +31,9 @@ export const CooperationSection = ({title, data, type}: CooperationSectionProps)
       <div className={'flex gap-4'}>
         {data
           .filter((item) => item.type === type)
-          .map((item, index) => (
+          .map((item) => (
             <PersonCard
-              key={index}
+              key={item.id}
               title={item.title}
               address={item.address}
               subtitle={item.description}
@@ -43,7 +43,6 @@ export const CooperationSection = ({title, data, type}: CooperationSectionProps)
             />
           ))}
       </div>
-      ;
     </>
   )
 }

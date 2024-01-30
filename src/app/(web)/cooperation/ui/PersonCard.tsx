@@ -49,7 +49,7 @@ export const PersonCard = (props: PersonCardProps) => {
     />
   )
 
-  console.log(isHover)
+  // console.log(isHover)
 
   return (
     <div className="group h-80 w-80 [perspective:1000px]">

@@ -9,9 +9,9 @@ export const OfficeHoursTable: React.FC<OfficeHoursTableProps> = ({rows}) => {
     <table>
       <tbody>
         {rows.length > 0 ? (
-          rows.map(({day, morning, afternoon}, index) => {
+          rows.map(({day, morning, afternoon}) => {
             return (
-              <tr key={index}>
+              <tr key={day}>
                 <td>{day}</td>
                 <td>{morning ? morning : '-'}</td>
                 <td>{afternoon ? afternoon : '-'}</td>
