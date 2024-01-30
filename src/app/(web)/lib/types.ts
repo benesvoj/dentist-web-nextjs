@@ -13,6 +13,7 @@ export type InsuranceCompaniesProps = {
 }
 
 export type ServicesProps = {
+  id: number
   title: string
   description: string
   image: string

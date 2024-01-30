@@ -82,6 +82,7 @@ export const insuranceCompanies: InsuranceCompaniesProps[] = [
 
 export const services: ServicesProps[] = [
   {
+    id: 1,
     title: 'Zachovná stomatologie',
     image: '/tooth-solid.svg',
     description: `Záchovná stomatologie je odvětví zubního lékařství, které se snaží pomocí preventivní péče, diagnostiky a následné léčby různých vad zachovat zuby co nejdéle funkční. Někdy se můžeme setkat i s názvem „konzervativní” stomatologie.
@@ -91,24 +92,28 @@ Cílem je pomocí nich ošetřit vlastní zuby a doplnit je tak, aby zůstala za
 `,
   },
   {
+    id: 2,
     title: 'Protetická stomatologie',
     image: '/tooth-solid.svg',
     description:
       'V případě velké ztráty tvrdých zubních tkání, které již nelze rekonstruovat přímo v ústech pacienta pomocí kompozitní výplně, nahrazujeme části zubu inlayí, onlayí nebo korunkou. Protetická stomatologie umožňuje nahradit ztracené části zubů, celé zuby, případně skupiny zubů.',
   },
   {
+    id: 3,
     title: 'Ošetření kořenových kanálků',
     image: '/tooth-solid.svg',
     description:
       'Endodontické ošetření znamená ošetření vnitřního prostoru zubu, laicky řečeno ošetření kořenových kanálků zubu. Je nutné ho provést vždy, když dojde v zubní dřeni k patologickému procesu, tedy zánětu nebo odumření, ať už následkem příliš velkého zubního kazu, nebo úrazu.',
   },
   {
+    id: 4,
     title: 'Dětská stomatologie',
     image: '/tooth-solid.svg',
     description:
       'Péči o chrup dětí doporučujeme a provádíme od jejich nejútlejšího věku za současné spolupráce rodičů. Děti si tak na nás postupně zvykají ještě v době, kdy nepříjemné zákroky nepotřebují. Dětský pacient je velmi vnímavý na upřímnost a pravdomluvnost nás dospělých. Je proto velmi důležité navození vzájemné důvěry, která umožní hladký průběh případného ošetření. I nespolupracující děti (z důvodu dřívější neblahé zkušenosti nebo strachu z neznámého) tento přístup v dalších návštěvách odměňují úsměvem.',
   },
   {
+    id: 5,
     title: 'OPG vyšetření',
     image: '/tooth-solid.svg',
     description:

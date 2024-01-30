@@ -1,9 +1,9 @@
 import type {Metadata} from 'next'
-import {Inter} from 'next/font/google'
+import {Roboto_Flex} from 'next/font/google'
 import './ui/globals.css'
 import React from 'react'
 
-const inter = Inter({subsets: ['latin']})
+const font = Roboto_Flex({subsets: ['latin']})
 
 export const metadata: Metadata = {
   title: 'LS dent, s.r.o.',
@@ -13,8 +13,8 @@ export const metadata: Metadata = {
 export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <main className="flex min-h-screen flex-col items-center justify-between p-24">
+      <body className={font.className}>
+        <main className="flex min-h-screen flex-col items-center justify-between p-8">
           {children}
         </main>
       </body>
