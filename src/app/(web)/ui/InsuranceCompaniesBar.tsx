@@ -5,17 +5,9 @@ import {Card} from '@/app/(web)/ui/Card'
 
 export const InsuranceCompaniesBar = () => {
 
-  // filter={"grayscale(1)"}
-  // transition={"filter 0.5s"}
-  // _hover={{
-  //   filter: "grayscale(0)",
-  // }}
-
-  const imageFilter = 'grayScale(1)'
-
   return (
-    <Card heading={'Pojišťovny'}>
-      <p>Ordinace je smluvním poskytovatelem pro tyto zdravotní pojišťovny.</p>
+    <Card heading={'Pojišťovny'} isFullWidth>
+      <p className='text-center'>Ordinace je smluvním poskytovatelem pro tyto zdravotní pojišťovny.</p>
       <div className={'flex flex-row flex-wrap gap-4 justify-center py-4 items-center'}>
         {insuranceCompanies.map(({title, url, logo}, index) => (
           <Link href={url} key={index} target="_blank">
