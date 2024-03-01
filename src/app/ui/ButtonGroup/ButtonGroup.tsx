@@ -1,8 +1,13 @@
 import React from 'react'
+import {clsx} from 'clsx'
 
-export const ButtonGroup = ({children}: {children: React.ReactNode}) => {
+interface ButtonGroupProps extends React.HTMLAttributes<HTMLElement> {
+  children: React.ReactNode
+}
+
+export const ButtonGroup = ({children, className}: ButtonGroupProps) => {
   return(
-    <div className='w-full flex justify-end gap-4 my-4'>
+    <div className={clsx('w-100 flex justify-end gap-4', className)}>
       {children}
     </div>
   )

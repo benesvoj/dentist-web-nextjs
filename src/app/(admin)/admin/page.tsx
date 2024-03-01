@@ -23,7 +23,7 @@ export default function Page() {
       >
         <FormInput label={'login'} type={'text'} />
         <FormInput label={'password'} type={'password'} />
-        <ButtonGroup>
+        <ButtonGroup className='mt-4'>
           <Button label='Vrátit zpět' type={'button'} variant='secondary' onClick={() => router.push('/')} />
           <Button type='submit' label='Přihlásit se' />
         </ButtonGroup>
