@@ -3,54 +3,33 @@ import {urls} from '@/app/(web)/lib/urls'
 import {employees} from '@/app/(web)/lib/website'
 import {Card} from '@/app/(web)/ui/Card'
 import {ExperienceProps} from '@/app/(web)/lib/types'
+import {Table, TableBody, TableCaption, TableCell, TableRow} from '@/components/ui/table'
+import {InfoCard} from '@/app/ui/InfoCard/InfoCard'
+import {Separator} from '@/components/ui/separator'
 
 export default function OurTeam() {
   return (
     <PageBody title={urls[4].title} flexCol>
-      <h3>Lékaři</h3>
-      <div className={'flex space-x-4 w-full'}>
+      <Separator  className='my-4'/>
+      <div className='grid grid-cols-1 md:grid-cols-2 space-y-4 justify-items-center'>
         {employees
-          .filter((employee) => employee.position === 'zubní lékař')
           .map((employee) => (
-            <Card heading={employee.name} avatar={'/user-doctor-solid.svg'} key={employee.id}>
-              <div>{employee.position}</div>
-              <div>
-                {employee.experience ?
-                  employee.experience?.map((experience: ExperienceProps) => (
-                    <div key={experience.id} className={'flex space-x-4'}>
-                      <div className={'text-sm'}>
-                        {experience.from} - {experience.to}
-                      </div>
-                      <div className={'text-sm'}>{experience.text}</div>
-                    </div>
-                  ))
+            <InfoCard key={employee.id} title={employee.name}>
+              <div className='text-center'>{employee.position}</div>
+              {employee.experience ? (
+                  <Table>
+                    <TableCaption>{employee.description}</TableCaption>
+                    {employee.experience?.map((experience: ExperienceProps) => (
+                      <TableBody>
+                        <TableRow key={experience.id}>
+                          <TableCell className='w-1/3 p-0'>{experience.from} - {experience.to}</TableCell>
+                          <TableCell className='p-2'>{experience.text}</TableCell>
+                        </TableRow>
+                      </TableBody>
+                    ))}
+                  </Table>)
                 : null}
-              </div>
-              <div>{employee.description}</div>
-            </Card>
-          ))}
-      </div>
-      <h3>Sestra</h3>
-      <div className={'flex space-x-4 w-full'}>
-        {employees
-          .filter((employee) => employee.position === 'sestra')
-          .map((employee, index) => (
-            <Card heading={employee.name} key={index}>
-              <div>{employee.position}</div>
-              <div>
-                {employee.experience
-                  ? employee.experience?.map((experience: ExperienceProps, index: number) => (
-                      <div key={index} className={'flex space-x-4'}>
-                        <div className={'text-sm'}>
-                          {experience.from} - {experience.to}
-                        </div>
-                        <div className={'text-sm'}>{experience.text}</div>
-                      </div>
-                    ))
-                  : null}
-              </div>
-              <div>{employee.description}</div>
-            </Card>
+            </InfoCard>
           ))}
       </div>
     </PageBody>

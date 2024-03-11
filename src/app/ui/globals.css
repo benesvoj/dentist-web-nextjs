@@ -6,13 +6,28 @@
     --foreground-rgb: 0, 0, 0;
     --background-start-rgb: 214, 219, 220;
     --background-end-rgb: 255, 255, 255;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --accent-foreground: 240 5.9% 10%;
+    --accent: 240 4.8% 95.9%;
+    --radius: 0.5rem;
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --foreground-rgb: 255, 255, 255;
-        --background-start-rgb: 0, 0, 0;
-        --background-end-rgb: 0, 0, 0;
+        /*--foreground-rgb: 255, 255, 255;*/
+        /*--background-start-rgb: 0, 0, 0;*/
+        /*--background-end-rgb: 0, 0, 0;*/
+        --foreground-rgb: 0, 0, 0;
+        --background-start-rgb: 214, 219, 220;
+        --background-end-rgb: 255, 255, 255;
+        --destructive-foreground: 0 0% 98%;
+        --border: 240 5.9% 90%;
+        --input: 240 5.9% 90%;
+        --accent-foreground: 240 5.9% 10%;
+        --accent: 240 4.8% 95.9%;
+        --radius: 0.5rem;
     }
 }
 
@@ -28,5 +43,5 @@ body {
 main {
     height: 100%;
     background-size: cover;
-    background: url('/bg-image.jpg') no-repeat center;
+    /*background: url('/bg-image.jpg') no-repeat center;*/
 }

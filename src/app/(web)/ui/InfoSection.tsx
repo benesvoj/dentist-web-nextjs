@@ -7,7 +7,7 @@ export const InfoSection = () => {
   const data = officeHours ? officeHours : []
 
   return (
-    <div className="flex gap-4 my-4 p-24">
+    <div className="flex justify-between">
       <InfoCard
         title="Info pro pacienty"
       >
@@ -21,8 +21,6 @@ export const InfoSection = () => {
       <InfoCard
         title="Ordinační doba">
         <OfficeHoursTable rows={data} />
-        <p className={'font-bold py-2'}>Provozní doba začíná hodinu před ordinační dobou.</p>
-        <p className={'font-bold'}>Omezený provoz ordinace z důvodu mateřské dovolené.</p>
       </InfoCard>
 
     </div>

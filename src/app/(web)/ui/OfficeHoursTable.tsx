@@ -1,4 +1,5 @@
 import {OfficeHoursProps} from '@/app/(web)/lib/types'
+import {Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow} from '@/components/ui/table'
 
 interface OfficeHoursTableProps {
   rows: OfficeHoursProps[]
@@ -6,24 +7,26 @@ interface OfficeHoursTableProps {
 
 export const OfficeHoursTable: React.FC<OfficeHoursTableProps> = ({rows}) => {
   return (
-    <table>
-      <tbody>
+    <Table>
+      <TableCaption>
+        <p className={'font-bold py-2'}>Provozní doba začíná hodinu před ordinační dobou.</p>
+        <p className={'font-bold'}>Omezený provoz ordinace z důvodu mateřské dovolené.</p>
+      </TableCaption>
+      <TableBody>
         {rows.length > 0 ? (
-          rows.map(({day, morning, afternoon}) => {
-            return (
-              <tr key={day}>
-                <td>{day}</td>
-                <td>{morning ? morning : '-'}</td>
-                <td>{afternoon ? afternoon : '-'}</td>
-              </tr>
-            )
-          })
+          rows.map(({day, morning, afternoon}) => (
+            <TableRow key={day}>
+              <TableCell>{day}</TableCell>
+              <TableCell>{morning ? morning : '-'}</TableCell>
+              <TableCell>{afternoon ? afternoon : '-'}</TableCell>
+            </TableRow>
+          ))
         ) : (
-          <tr>
-            <td>There are no office hours</td>
-          </tr>
+          <TableRow>
+            <TableCell>There are no office hours</TableCell>
+          </TableRow>
         )}
-      </tbody>
-    </table>
+      </TableBody>
+    </Table>
   )
 }

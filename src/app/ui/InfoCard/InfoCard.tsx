@@ -7,7 +7,7 @@ interface InfoCardProps {
 
 export const InfoCard: React.FC<InfoCardProps> = ({title, children}) => {
   return (
-    <Card className="rounded-2xl bg-white w-[400px]">
+    <Card className="rounded-2xl bg-white w-[400px] hover:bg-accent hover:border-gray-300">
       <CardHeader>
         <CardTitle className='text-center uppercase'>{title}</CardTitle>
       </CardHeader>

@@ -23,6 +23,8 @@ export type UrlsProps = {
   id: number
   title: string
   url?: string
+  description?: string
+  subPages?: UrlsProps[]
 }
 
 export type ExperienceProps = {
