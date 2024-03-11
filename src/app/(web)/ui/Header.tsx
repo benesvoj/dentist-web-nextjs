@@ -5,7 +5,7 @@ import {Navigation} from '@/app/(web)/ui/Navigation'
 
 export const Header = () => {
   return (
-    <div className="flex-col w-full max-w-5xl">
+    <header className="flex-col w-full max-w-5xl">
       <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
         <div
           className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
@@ -25,6 +25,6 @@ export const Header = () => {
         </div>
       </div>
       <Navigation navItems={urls} isRounded />
-    </div>
+    </header>
 )
 }
