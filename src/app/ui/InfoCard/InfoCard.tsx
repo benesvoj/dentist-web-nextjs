@@ -9,7 +9,7 @@ export const InfoCard: React.FC<InfoCardProps> = ({title, children}) => {
   return (
     <Card className="rounded-2xl bg-white w-[400px]">
       <CardHeader>
-        <CardTitle>{title}</CardTitle>
+        <CardTitle className='text-center uppercase'>{title}</CardTitle>
       </CardHeader>
       <CardContent>
         {children}

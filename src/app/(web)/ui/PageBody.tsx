@@ -10,7 +10,7 @@ export const PageBody = ({title, children, flexCol}: PageBodyProps) => {
   const flexColClass = flexCol ? 'flex-col' : 'flex-row'
 
   return (
-    <div className={'flex w-full h-max flex-col max-w-5xl'}>
+    <div className={'flex w-full h-max flex-col max-w-5xl my-2'}>
       <PageHeading title={title} />
       {children && <div className={`flex w-full ${flexColClass}`}>{children}</div>}
     </div>
