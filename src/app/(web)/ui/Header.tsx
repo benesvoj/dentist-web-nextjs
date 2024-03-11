@@ -1,7 +1,6 @@
 import {Logo} from '@/app/(web)/ui/Logo'
 import {urls} from '@/app/(web)/lib/urls'
 import {website} from '@/app/(web)/lib/website'
-import {Navigation} from '@/app/(web)/ui/Navigation'
 import {NavBar} from '@/app/(web)/ui/NavBar'
 
 export const Header = () => {
