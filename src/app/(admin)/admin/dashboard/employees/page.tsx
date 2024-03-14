@@ -83,6 +83,8 @@ export default function Page() {
                     </Button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="end" className="w-[160px] bg-white">
+                    // TODO: Add zkusenost
+                    <DropdownMenuItem>Pridat zkusenost</DropdownMenuItem>
                     {id && <DropdownMenuItem onClick={() => handleEdit(id)}>Edit</DropdownMenuItem>}
                     {id && <DropdownMenuItem onClick={() => handleDelete(id)}>Delete</DropdownMenuItem>}
                   </DropdownMenuContent>
