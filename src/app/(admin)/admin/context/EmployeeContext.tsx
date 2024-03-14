@@ -1,7 +1,7 @@
 'use client'
 import {createContext, ReactNode, useContext, useState} from 'react'
-import {Employees} from '@/lib/definition'
-import {fetchEmployees} from '@/lib/employeeApi'
+import {EmployeePositionTypesProps, Employees} from '@/lib/definition'
+import {addEmployeePosition, fetchEmployeePositionTypes, fetchEmployees} from '@/lib/employeeApi'
 
 //TODO: probrat s Ludkem contexty
 
@@ -11,6 +11,8 @@ interface EmployeeContextProps {
   employeesData: Employees[];
   setEmployeesData: (data: Employees[]) => void;
   reloadData: () => Promise<void>;
+  reloadPositionData: () => Promise<void>;
+  positionsData: EmployeePositionTypesProps[];
 }
 
 const EmployeeContext = createContext<EmployeeContextProps | undefined>(undefined)
@@ -18,14 +20,20 @@ const EmployeeContext = createContext<EmployeeContextProps | undefined>(undefine
 export const EmployeeProvider = ({children}: {children: ReactNode}) => {
   const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false)
   const [employeesData, setEmployeesData] = useState<Employees[]>([])
+  const [positionsData, setPositionsData] = useState<EmployeePositionTypesProps[]>([])
 
   const reloadData = async () => {
     const data = await fetchEmployees()
     setEmployeesData(data)
   }
 
+  const reloadPositionData = async () => {
+    const data = await fetchEmployeePositionTypes()
+    setPositionsData(data)
+  }
+
   return (
-    <EmployeeContext.Provider value={{isDialogOpen, setIsDialogOpen, employeesData, setEmployeesData, reloadData}}>
+    <EmployeeContext.Provider value={{isDialogOpen, setIsDialogOpen, employeesData, setEmployeesData, reloadData, reloadPositionData, positionsData}}>
       {children}
     </EmployeeContext.Provider>
   )

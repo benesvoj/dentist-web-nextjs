@@ -2,7 +2,7 @@ import type {Metadata} from 'next'
 import {Roboto_Flex} from 'next/font/google'
 import './ui/globals.css'
 import React from 'react'
-import {EmployeeProvider} from '@/app/(admin)/admin/dashboard/employees/EmployeeContext'
+import {EmployeeProvider} from '@/app/(admin)/admin/context/EmployeeContext'
 
 const font = Roboto_Flex({subsets: ['latin']})
 

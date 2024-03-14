@@ -14,7 +14,7 @@ import {zodResolver} from '@hookform/resolvers/zod'
 import {Form, FormControl, FormField, FormItem, FormLabel} from '@/components/ui/form'
 import {Input} from '@/components/ui/input'
 import {addEmployee} from '@/lib/employeeApi'
-import {useEmployeeContext} from '@/app/(admin)/admin/dashboard/employees/EmployeeContext'
+import {useEmployeeContext} from '@/app/(admin)/admin/context/EmployeeContext'
 import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from '@/components/ui/select'
 import {employeePositionTypes} from '@/types/types'
 

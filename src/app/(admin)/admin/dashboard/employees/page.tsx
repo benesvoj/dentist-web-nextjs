@@ -7,11 +7,10 @@ import {PlusCircleIcon} from '@heroicons/react/24/outline'
 import {useEffect} from 'react'
 import {Button} from '@/components/ui/button'
 import {NewEmployeeDialog} from '@/app/(admin)/admin/dashboard/employees/ui/NewEmployeeDialog'
-import {useEmployeeContext} from '@/app/(admin)/admin/dashboard/employees/EmployeeContext'
-import {employeePositionTypes} from '@/types/types'
+import {useEmployeeContext} from '@/app/(admin)/admin/context/EmployeeContext'
 
 export default function Page() {
-  const {employeesData, isDialogOpen, setIsDialogOpen, reloadData} = useEmployeeContext()
+  const {employeesData, isDialogOpen, setIsDialogOpen, reloadData, positionsData} = useEmployeeContext()
 
   useEffect(() => {
     reloadData()
@@ -37,7 +36,7 @@ export default function Page() {
               <TableCell>{id}</TableCell>
               <TableCell>{titleBefore} {firstName} {lastName} {titleAfter}</TableCell>
               <TableCell>
-                {employeePositionTypes.find(({value}) => value === position)?.label || position}
+                {positionsData.find(({value}) => value === position)?.label || position}
               </TableCell>
             </TableRow>
           ))}
