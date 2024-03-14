@@ -8,18 +8,21 @@ import {PlusCircleIcon} from '@heroicons/react/24/outline'
 import {useEffect, useState} from 'react'
 import {Button} from '@/components/ui/button'
 import {NewEmployeeDialog} from '@/app/(admin)/admin/dashboard/employees/ui/NewEmployeeDialog'
+import {useEmployeeContext} from '@/app/(admin)/admin/dashboard/employees/EmployeeContext'
+import {employeePositionTypes} from '@/types/types'
 
 export default function Page() {
-  const [employeesData, setEmployeesData] = useState<Employees[]>([])
-  const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false)
+  const {employeesData, isDialogOpen, setIsDialogOpen, reloadData} = useEmployeeContext()
+  // const [employeesData, setEmployeesData] = useState<Employees[]>([])
+  // const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false)
 
-  const loadData = async () => {
-    const data = await fetchEmployees()
-    setEmployeesData(data)
-  }
-
+  // const loadData = async () => {
+  //   const data = await fetchEmployees()
+  //   setEmployeesData(data)
+  // }
+  //
   useEffect(() => {
-    loadData()
+    reloadData()
   }, [])
 
   return (
@@ -41,12 +44,14 @@ export default function Page() {
             <TableRow key={id}>
               <TableCell>{id}</TableCell>
               <TableCell>{titleBefore} {firstName} {lastName} {titleAfter}</TableCell>
-              <TableCell>{position}</TableCell>
+              <TableCell>
+                {employeePositionTypes.find(({value}) => value === position)?.label || position}
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
       </Table>
-      {isDialogOpen && <NewEmployeeDialog isOpen={isDialogOpen} onOpenChange={setIsDialogOpen} loadData={loadData} />}
+      {isDialogOpen && <NewEmployeeDialog />}
     </>
   )
 }

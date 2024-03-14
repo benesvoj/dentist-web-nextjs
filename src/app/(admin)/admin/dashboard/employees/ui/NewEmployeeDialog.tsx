@@ -14,12 +14,13 @@ import {zodResolver} from '@hookform/resolvers/zod'
 import {Form, FormControl, FormField, FormItem, FormLabel} from '@/components/ui/form'
 import {Input} from '@/components/ui/input'
 import {addEmployee} from '@/lib/employeeApi'
+import {useEmployeeContext} from '@/app/(admin)/admin/dashboard/employees/EmployeeContext'
+import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from '@/components/ui/select'
+import {employeePositionTypes} from '@/types/types'
 
-export const NewEmployeeDialog = ({isOpen, onOpenChange, loadData}: {
-  isOpen: boolean,
-  onOpenChange: (isOpen: boolean) => void,
-  loadData: () => Promise<void>
-}) => {
+export const NewEmployeeDialog = () => {
+  const {isDialogOpen, setIsDialogOpen, reloadData} = useEmployeeContext()
+
   const form = useForm<z.infer<typeof schema>>({
     resolver: zodResolver(schema),
     defaultValues: {
@@ -39,13 +40,13 @@ export const NewEmployeeDialog = ({isOpen, onOpenChange, loadData}: {
       titleAfter: values.titleAfter,
       position: values.position,
     }).then(() => {
-      onOpenChange(!isOpen)
-      loadData()
+      setIsDialogOpen(!isDialogOpen)
+      reloadData()
     })
   }
 
   return (
-    <Dialog open={isOpen} onOpenChange={onOpenChange}>
+    <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
       <DialogContent className="bg-white">
         <DialogHeader>
           <DialogTitle>Novy zamestanec</DialogTitle>
@@ -98,9 +99,19 @@ export const NewEmployeeDialog = ({isOpen, onOpenChange, loadData}: {
                 <FormLabel>
                   Pozice
                 </FormLabel>
-                <FormControl>
-                  <Input {...field} />
-                </FormControl>
+                {/*<Input {...field} />*/}
+                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                  <FormControl>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Vyberte pozici" />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent className="bg-white">
+                    {employeePositionTypes.map(({id, value, label}) => (
+                      <SelectItem key={id} value={value}>{label}</SelectItem>),
+                    )}
+                  </SelectContent>
+                </Select>
               </FormItem>
             )} />
             <DialogFooter className="sm:justify-end">
@@ -117,6 +128,8 @@ export const NewEmployeeDialog = ({isOpen, onOpenChange, loadData}: {
     </Dialog>
   )
 }
+
+// TODO: missing error validation in the form
 
 const schema = z.object({
   titleBefore: z.string().max(50),
