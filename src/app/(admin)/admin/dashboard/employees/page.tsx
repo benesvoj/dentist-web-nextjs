@@ -2,10 +2,9 @@
 
 import {HeadNav} from '@/app/(admin)/admin/dashboard/ui/HeadNav'
 import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from '@/components/ui/table'
-import {fetchEmployees} from '@/lib/employeeApi'
 import {Employees} from '@/lib/definition'
 import {PlusCircleIcon} from '@heroicons/react/24/outline'
-import {useEffect, useState} from 'react'
+import {useEffect} from 'react'
 import {Button} from '@/components/ui/button'
 import {NewEmployeeDialog} from '@/app/(admin)/admin/dashboard/employees/ui/NewEmployeeDialog'
 import {useEmployeeContext} from '@/app/(admin)/admin/dashboard/employees/EmployeeContext'
@@ -13,14 +12,7 @@ import {employeePositionTypes} from '@/types/types'
 
 export default function Page() {
   const {employeesData, isDialogOpen, setIsDialogOpen, reloadData} = useEmployeeContext()
-  // const [employeesData, setEmployeesData] = useState<Employees[]>([])
-  // const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false)
 
-  // const loadData = async () => {
-  //   const data = await fetchEmployees()
-  //   setEmployeesData(data)
-  // }
-  //
   useEffect(() => {
     reloadData()
   }, [])
