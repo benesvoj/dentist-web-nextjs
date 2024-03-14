@@ -1,21 +1,28 @@
+'use client'
+
 import {HeadNav} from '@/app/(admin)/admin/dashboard/ui/HeadNav'
 import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from '@/components/ui/table'
 import {fetchEmployees} from '@/lib/employeeApi'
-import {NewEmployeeDialog} from '@/app/(admin)/admin/dashboard/employees/ui/NewEmployeeDialog'
-import {Button} from '@/components/ui/button'
 import {Employees} from '@/lib/definition'
 import Link from 'next/link'
 import {PlusIcon} from '@heroicons/react/24/solid'
 import {routes} from '@/app/(admin)/admin/dashboard/utils/routes'
+import {useEffect} from 'react'
 
-export default async function Page() {
+export default function Page() {
   let employeesData: Employees[] = []
 
+  useEffect(() => {
     const loadData = async () => {
       employeesData = await fetchEmployees()
     }
-    await loadData()
-
+    console.log({
+      POSTGRES_URL: process.env.POSTGRES_URL,
+      POSTGRES_URL_NON_POOLING: process.env.POSTGRES_URL_NON_POOLING,
+      NEXT_PUBLIC_POSTGRES_URL: process.env.NEXT_PUBLIC_POSTGRES_URL,
+    })
+    loadData()
+  }, [])
 
 
   return (
