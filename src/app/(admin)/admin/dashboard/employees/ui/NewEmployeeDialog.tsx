@@ -16,10 +16,9 @@ import {Input} from '@/components/ui/input'
 import {addEmployee} from '@/lib/employeeApi'
 import {useEmployeeContext} from '@/app/(admin)/admin/context/EmployeeContext'
 import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from '@/components/ui/select'
-import {employeePositionTypes} from '@/types/types'
 
 export const NewEmployeeDialog = () => {
-  const {isDialogOpen, setIsDialogOpen, reloadData} = useEmployeeContext()
+  const {isDialogOpen, setIsDialogOpen, reloadData, positionsData} = useEmployeeContext()
 
   const form = useForm<z.infer<typeof schema>>({
     resolver: zodResolver(schema),
@@ -107,8 +106,8 @@ export const NewEmployeeDialog = () => {
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent className="bg-white">
-                    {employeePositionTypes.map(({id, value, label}) => (
-                      <SelectItem key={id} value={value}>{label}</SelectItem>),
+                    {positionsData.map(({value, label}) => (
+                      <SelectItem key={value} value={value}>{label}</SelectItem>),
                     )}
                   </SelectContent>
                 </Select>
