@@ -7,20 +7,16 @@ import {Employees} from '@/lib/definition'
 import Link from 'next/link'
 import {PlusIcon} from '@heroicons/react/24/solid'
 import {routes} from '@/app/(admin)/admin/dashboard/utils/routes'
-import {useEffect} from 'react'
+import {useEffect, useState} from 'react'
 
 export default function Page() {
-  let employeesData: Employees[] = []
+  const [employeesData, setEmployeesData] = useState<Employees[]>([])
 
   useEffect(() => {
     const loadData = async () => {
-      employeesData = await fetchEmployees()
+      const data = await fetchEmployees()
+      setEmployeesData(data)
     }
-    console.log({
-      POSTGRES_URL: process.env.POSTGRES_URL,
-      POSTGRES_URL_NON_POOLING: process.env.POSTGRES_URL_NON_POOLING,
-      NEXT_PUBLIC_POSTGRES_URL: process.env.NEXT_PUBLIC_POSTGRES_URL,
-    })
     loadData()
   }, [])
 

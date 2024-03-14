@@ -25,15 +25,6 @@ export default function Page() {
   })
 
   const onSubmit = (values: z.infer<typeof schema>) => {
-    console.log('submitting')
-    console.log(values)
-
-    console.log({
-      POSTGRES_URL: process.env.POSTGRES_URL,
-      POSTGRES_URL_NON_POOLING: process.env.POSTGRES_URL_NON_POOLING,
-      NEXT_PUBLIC_POSTGRES_URL: process.env.NEXT_PUBLIC_POSTGRES_URL,
-    })
-
     addEmployee({
       titleBefore: values.titleBefore,
       firstName: values.firstName,
