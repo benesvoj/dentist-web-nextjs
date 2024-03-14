@@ -1,6 +1,6 @@
 'use client'
 import {createContext, ReactNode, useContext, useState} from 'react'
-import {EmployeePositionTypesProps, Employees} from '@/lib/definition'
+import {EmployeePositionTypesProps, Employee} from '@/lib/definition'
 import {addEmployeePosition, fetchEmployeePositionTypes, fetchEmployees} from '@/lib/employeeApi'
 
 //TODO: probrat s Ludkem contexty
@@ -8,22 +8,25 @@ import {addEmployeePosition, fetchEmployeePositionTypes, fetchEmployees} from '@
 interface EmployeeContextProps {
   isDialogOpen: boolean;
   setIsDialogOpen: (isOpen: boolean) => void;
-  employeesData: Employees[];
-  setEmployeesData: (data: Employees[]) => void;
+  employeesData: Employee[];
+  setEmployeesData: (data: Employee[]) => void;
   reloadData: () => Promise<void>;
   reloadPositionData: () => Promise<void>;
   positionsData: EmployeePositionTypesProps[];
   isDeleteDialogOpen: boolean;
   setIsDeleteDialogOpen: (isDeleteDialogOpen: boolean) => void;
+  isEditDialogOpen: boolean;
+  setIsEditDialogOpen: (isEditDialogOpen: boolean) => void;
 }
 
 const EmployeeContext = createContext<EmployeeContextProps | undefined>(undefined)
 
 export const EmployeeProvider = ({children}: {children: ReactNode}) => {
   const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false)
-  const [employeesData, setEmployeesData] = useState<Employees[]>([])
+  const [employeesData, setEmployeesData] = useState<Employee[]>([])
   const [positionsData, setPositionsData] = useState<EmployeePositionTypesProps[]>([])
   const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState<boolean>(false)
+  const [isEditDialogOpen, setIsEditDialogOpen] = useState<boolean>(false)
 
   const reloadData = async () => {
     const data = await fetchEmployees()
@@ -36,7 +39,19 @@ export const EmployeeProvider = ({children}: {children: ReactNode}) => {
   }
 
   return (
-    <EmployeeContext.Provider value={{isDialogOpen, setIsDialogOpen, employeesData, setEmployeesData, reloadData, reloadPositionData, positionsData, isDeleteDialogOpen, setIsDeleteDialogOpen}}>
+    <EmployeeContext.Provider value={{
+      isDialogOpen,
+      setIsDialogOpen,
+      employeesData,
+      setEmployeesData,
+      reloadData,
+      reloadPositionData,
+      positionsData,
+      isDeleteDialogOpen,
+      setIsDeleteDialogOpen,
+      isEditDialogOpen,
+      setIsEditDialogOpen,
+    }}>
       {children}
     </EmployeeContext.Provider>
   )

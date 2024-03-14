@@ -2,13 +2,13 @@
 
 import {unstable_noStore as noStore} from 'next/cache'
 import {sql} from '@vercel/postgres'
-import {EmployeePositionTypesProps, Employees} from '@/lib/definition'
+import {EmployeePositionTypesProps, Employee} from '@/lib/definition'
 
 export async function fetchEmployees() {
   noStore()
 
   try {
-    const data = await sql<Employees>`SELECT * FROM employees`
+    const data = await sql<Employee>`SELECT * FROM employees`
     return data.rows
   } catch (error) {
     console.error('Database Error:', error)
@@ -16,7 +16,20 @@ export async function fetchEmployees() {
   }
 }
 
-export async function addEmployee(employee: Employees) {
+export async function fetchEmployeeById(id: string) {
+  noStore()
+
+  try {
+    const data = await sql<Employee>`SELECT * FROM employees WHERE id = ${id}`
+    return data.rows[0]
+  } catch (error) {
+    console.error('Database Error:', error)
+    throw new Error('Failed to fetch employee data.')
+  }
+
+}
+
+export async function addEmployee(employee: Employee) {
   noStore()
 
   try {

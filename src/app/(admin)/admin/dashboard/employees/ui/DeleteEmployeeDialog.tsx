@@ -16,7 +16,6 @@ export const DeleteEmployeeDialog = ({id}: {id: string}) => {
   const {isDeleteDialogOpen, setIsDeleteDialogOpen, reloadData} = useEmployeeContext()
 
   const handleConfirmedRemoval = () => {
-    console.log('Remove employee with id:', id)
     deleteEmployee(id)
     reloadData()
     setIsDeleteDialogOpen(false)

@@ -2,7 +2,7 @@
 
 import {HeadNav} from '@/app/(admin)/admin/dashboard/ui/HeadNav'
 import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from '@/components/ui/table'
-import {Employees} from '@/lib/definition'
+import {Employee} from '@/lib/definition'
 import {PlusCircleIcon} from '@heroicons/react/24/outline'
 import {useEffect, useState} from 'react'
 import {Button} from '@/components/ui/button'
@@ -11,21 +11,42 @@ import {useEmployeeContext} from '@/app/(admin)/admin/context/EmployeeContext'
 import {DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger} from '@/components/ui/dropdown-menu'
 import {DotsVerticalIcon} from '@radix-ui/react-icons'
 import {DeleteEmployeeDialog} from '@/app/(admin)/admin/dashboard/employees/ui/DeleteEmployeeDialog'
+import {EditEmployeeDialog} from '@/app/(admin)/admin/dashboard/employees/ui/EditEmployeeDialog'
+import {fetchEmployeeById} from '@/lib/employeeApi'
 
 export default function Page() {
-  const {employeesData, isDialogOpen, setIsDialogOpen, reloadData, positionsData, isDeleteDialogOpen, setIsDeleteDialogOpen} = useEmployeeContext()
-  const [idToRemove, setIdToRemove] = useState<string>('')
+  const {
+    employeesData,
+    isDialogOpen,
+    setIsDialogOpen,
+    reloadData,
+    positionsData,
+    isDeleteDialogOpen,
+    setIsDeleteDialogOpen,
+    isEditDialogOpen,
+    setIsEditDialogOpen,
+  } = useEmployeeContext()
+  const [selectedId, setSelectedId] = useState<string>('')
+  const [employee, setEmployee] = useState<Employee | null>(null)
 
   useEffect(() => {
     reloadData()
   }, [])
 
   const handleDelete = (id: string) => {
-    console.log('delete', id)
     setIsDeleteDialogOpen(!isDeleteDialogOpen)
-    setIdToRemove(id)
+    setSelectedId(id)
   }
 
+  const fetchEmployee = async (id: string) => {
+    setEmployee(await fetchEmployeeById(id))
+  }
+
+  const handleEdit = (id: string) => {
+    setIsEditDialogOpen(!isEditDialogOpen)
+   fetchEmployee(id)
+  }
+  
   return (
     <>
       <HeadNav title="Seznam zamestnancu a jejich detail">
@@ -41,7 +62,7 @@ export default function Page() {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {employeesData.map(({id, titleBefore, firstName, lastName, titleAfter, position}: Employees) => (
+          {employeesData.map(({id, titleBefore, firstName, lastName, titleAfter, position}: Employee) => (
             <TableRow key={id}>
               <TableCell>{id}</TableCell>
               <TableCell>{titleBefore} {firstName} {lastName} {titleAfter}</TableCell>
@@ -60,7 +81,7 @@ export default function Page() {
                     </Button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="end" className="w-[160px] bg-white">
-                    <DropdownMenuItem>Edit</DropdownMenuItem>
+                    {id && <DropdownMenuItem onClick={() => handleEdit(id)}>Edit</DropdownMenuItem>}
                     {id && <DropdownMenuItem onClick={() => handleDelete(id)}>Delete</DropdownMenuItem>}
                   </DropdownMenuContent>
                 </DropdownMenu>
@@ -70,7 +91,8 @@ export default function Page() {
         </TableBody>
       </Table>
       {isDialogOpen && <NewEmployeeDialog />}
-      {isDeleteDialogOpen && <DeleteEmployeeDialog id={idToRemove} />}
+      {isDeleteDialogOpen && <DeleteEmployeeDialog id={selectedId} />}
+      {isEditDialogOpen && employee && <EditEmployeeDialog employee={employee} />}
     </>
   )
 }
