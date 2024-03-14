@@ -27,6 +27,18 @@ export async function addEmployee(employee: Employees) {
   }
 }
 
+export async function deleteEmployee(id: string) {
+  noStore()
+
+  try {
+    await sql`DELETE FROM employees WHERE id = ${id}`
+  } catch (error) {
+    console.error('Database Error:', error)
+    throw new Error('Failed to delete employee.')
+  }
+
+}
+
 export async function fetchEmployeePositionTypes() {
   noStore()
 

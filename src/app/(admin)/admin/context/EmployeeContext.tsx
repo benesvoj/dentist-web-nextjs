@@ -13,6 +13,8 @@ interface EmployeeContextProps {
   reloadData: () => Promise<void>;
   reloadPositionData: () => Promise<void>;
   positionsData: EmployeePositionTypesProps[];
+  isDeleteDialogOpen: boolean;
+  setIsDeleteDialogOpen: (isDeleteDialogOpen: boolean) => void;
 }
 
 const EmployeeContext = createContext<EmployeeContextProps | undefined>(undefined)
@@ -21,6 +23,7 @@ export const EmployeeProvider = ({children}: {children: ReactNode}) => {
   const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false)
   const [employeesData, setEmployeesData] = useState<Employees[]>([])
   const [positionsData, setPositionsData] = useState<EmployeePositionTypesProps[]>([])
+  const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState<boolean>(false)
 
   const reloadData = async () => {
     const data = await fetchEmployees()
@@ -33,7 +36,7 @@ export const EmployeeProvider = ({children}: {children: ReactNode}) => {
   }
 
   return (
-    <EmployeeContext.Provider value={{isDialogOpen, setIsDialogOpen, employeesData, setEmployeesData, reloadData, reloadPositionData, positionsData}}>
+    <EmployeeContext.Provider value={{isDialogOpen, setIsDialogOpen, employeesData, setEmployeesData, reloadData, reloadPositionData, positionsData, isDeleteDialogOpen, setIsDeleteDialogOpen}}>
       {children}
     </EmployeeContext.Provider>
   )
