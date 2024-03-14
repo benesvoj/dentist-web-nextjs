@@ -1,7 +1,7 @@
 'use client'
 import {createContext, ReactNode, useContext, useState} from 'react'
 import {EmployeePositionTypesProps, Employee} from '@/lib/definition'
-import {addEmployeePosition, fetchEmployeePositionTypes, fetchEmployees} from '@/lib/employeeApi'
+import {fetchEmployeePositionTypes, fetchEmployees} from '@/api/employeeApi'
 
 //TODO: probrat s Ludkem contexty
 

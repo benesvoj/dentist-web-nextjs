@@ -2,7 +2,8 @@ import type {Metadata} from 'next'
 import {Roboto_Flex} from 'next/font/google'
 import './ui/globals.css'
 import React from 'react'
-import {EmployeeProvider} from '@/app/(admin)/admin/context/EmployeeContext'
+import {EmployeeProvider} from '@/context/EmployeeContext'
+import {PriceListProvider} from '@/context/PriceListContext'
 
 const font = Roboto_Flex({subsets: ['latin']})
 
@@ -17,7 +18,9 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
     <body className={font.className}>
     <main className="flex flex-col items-center justify-between p-8">
       <EmployeeProvider>
-        {children}
+        <PriceListProvider>
+          {children}
+        </PriceListProvider>
       </EmployeeProvider>
     </main>
     </body>

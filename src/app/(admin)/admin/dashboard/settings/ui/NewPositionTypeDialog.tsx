@@ -13,8 +13,8 @@ import {Button} from '@/components/ui/button'
 import {useForm} from 'react-hook-form'
 import {z} from 'zod'
 import {zodResolver} from '@hookform/resolvers/zod'
-import {useEmployeeContext} from '@/app/(admin)/admin/context/EmployeeContext'
-import {addEmployeePosition} from '@/lib/employeeApi'
+import {useEmployeeContext} from '@/context/EmployeeContext'
+import {addEmployeePosition} from '@/api/employeeApi'
 
 export const NewPositionTypeDialog = () => {
   const {isDialogOpen, setIsDialogOpen, reloadPositionData} = useEmployeeContext()

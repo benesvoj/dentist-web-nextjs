@@ -9,8 +9,8 @@ import {
 } from '@/components/ui/dialog'
 import {Button} from '@/components/ui/button'
 import {DialogBody} from 'next/dist/client/components/react-dev-overlay/internal/components/Dialog'
-import {useEmployeeContext} from '@/app/(admin)/admin/context/EmployeeContext'
-import {deleteEmployee} from '@/lib/employeeApi'
+import {useEmployeeContext} from '@/context/EmployeeContext'
+import {deleteEmployee} from '@/api/employeeApi'
 
 export const DeleteEmployeeDialog = ({id}: {id: string}) => {
   const {isDeleteDialogOpen, setIsDeleteDialogOpen, reloadData} = useEmployeeContext()

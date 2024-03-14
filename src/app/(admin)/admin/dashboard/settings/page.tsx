@@ -6,7 +6,7 @@ import {PlusCircleIcon} from '@heroicons/react/24/outline'
 import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from '@/components/ui/table'
 import {useEffect} from 'react'
 import {NewPositionTypeDialog} from '@/app/(admin)/admin/dashboard/settings/ui/NewPositionTypeDialog'
-import {useEmployeeContext} from '@/app/(admin)/admin/context/EmployeeContext'
+import {useEmployeeContext} from '@/context/EmployeeContext'
 
 export default function Page() {
   const {isDialogOpen, setIsDialogOpen, reloadPositionData, positionsData} = useEmployeeContext()
@@ -35,8 +35,8 @@ export default function Page() {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {positionsData.map(({value, label}) => (
-                  <TableRow key={value}>
+                {positionsData.map(({value, label}, index) => (
+                  <TableRow key={index}>
                     <TableCell>
                       {value}
                     </TableCell>

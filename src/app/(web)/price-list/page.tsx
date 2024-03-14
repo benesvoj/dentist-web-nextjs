@@ -1,11 +1,17 @@
+'use client'
 import {PageBody} from '@/app/(web)/ui/PageBody'
 import {urls} from '@/app/(web)/lib/urls'
-import {priceList} from '@/app/(web)/lib/website'
-import {Card} from '@/app/(web)/ui/Card'
 import {Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow} from '@/components/ui/table'
+import {usePriceListContext} from '@/context/PriceListContext'
+import {useEffect} from 'react'
 
 export default function PriceList() {
-  const cellStyle = 'py-1.5'
+  const {priceListData, reloadPriceListData} = usePriceListContext()
+
+  useEffect(() => {
+    reloadPriceListData()
+  }, [])
+
   return (
     <PageBody title={urls[2].title}>
       <Table>
@@ -18,7 +24,7 @@ export default function PriceList() {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {priceList.map(({id, title, price}) => (
+          {priceListData.map(({id, title, price}) => (
           <TableRow key={id}>
             <TableCell>{title}</TableCell>
             <TableCell>{price}</TableCell>

@@ -13,7 +13,7 @@ import {useForm} from 'react-hook-form'
 import {zodResolver} from '@hookform/resolvers/zod'
 import {Form, FormControl, FormField, FormItem, FormLabel} from '@/components/ui/form'
 import {Input} from '@/components/ui/input'
-import {useEmployeeContext} from '@/app/(admin)/admin/context/EmployeeContext'
+import {useEmployeeContext} from '@/context/EmployeeContext'
 import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from '@/components/ui/select'
 import {Employee} from '@/lib/definition'
 
@@ -97,8 +97,8 @@ export const EditEmployeeDialog = ({employee}: {employee: Employee}) => {
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent className="bg-white">
-                    {positionsData.map(({value, label}) => (
-                      <SelectItem key={value} value={value}>{label}</SelectItem>),
+                    {positionsData.map(({value, label}, index) => (
+                      <SelectItem key={index} value={value}>{label}</SelectItem>),
                     )}
                   </SelectContent>
                 </Select>

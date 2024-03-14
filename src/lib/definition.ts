@@ -12,3 +12,10 @@ export interface EmployeePositionTypesProps {
   value: string
   label: string
 }
+
+export interface PriceListRaw {
+  id?: string,
+  title: string,
+  price: string,
+  order: number,
+}

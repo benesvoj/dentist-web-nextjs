@@ -7,12 +7,12 @@ import {PlusCircleIcon} from '@heroicons/react/24/outline'
 import {useEffect, useState} from 'react'
 import {Button} from '@/components/ui/button'
 import {NewEmployeeDialog} from '@/app/(admin)/admin/dashboard/employees/ui/NewEmployeeDialog'
-import {useEmployeeContext} from '@/app/(admin)/admin/context/EmployeeContext'
+import {useEmployeeContext} from '@/context/EmployeeContext'
 import {DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger} from '@/components/ui/dropdown-menu'
 import {DotsVerticalIcon} from '@radix-ui/react-icons'
 import {DeleteEmployeeDialog} from '@/app/(admin)/admin/dashboard/employees/ui/DeleteEmployeeDialog'
 import {EditEmployeeDialog} from '@/app/(admin)/admin/dashboard/employees/ui/EditEmployeeDialog'
-import {fetchEmployeeById} from '@/lib/employeeApi'
+import {fetchEmployeeById} from '@/api/employeeApi'
 
 export default function Page() {
   const {
@@ -83,7 +83,7 @@ export default function Page() {
                     </Button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="end" className="w-[160px] bg-white">
-                    // TODO: Add zkusenost
+                    {/*TODO: add zkusenosti*/}
                     <DropdownMenuItem>Pridat zkusenost</DropdownMenuItem>
                     {id && <DropdownMenuItem onClick={() => handleEdit(id)}>Edit</DropdownMenuItem>}
                     {id && <DropdownMenuItem onClick={() => handleDelete(id)}>Delete</DropdownMenuItem>}

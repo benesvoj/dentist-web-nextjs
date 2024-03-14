@@ -11,10 +11,10 @@ import {Button} from '@/components/ui/button'
 import {z} from 'zod'
 import {useForm} from 'react-hook-form'
 import {zodResolver} from '@hookform/resolvers/zod'
-import {Form, FormControl, FormField, FormItem, FormLabel} from '@/components/ui/form'
+import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage} from '@/components/ui/form'
 import {Input} from '@/components/ui/input'
-import {addEmployee} from '@/lib/employeeApi'
-import {useEmployeeContext} from '@/app/(admin)/admin/context/EmployeeContext'
+import {addEmployee} from '@/api/employeeApi'
+import {useEmployeeContext} from '@/context/EmployeeContext'
 import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from '@/components/ui/select'
 import {Textarea} from '@/components/ui/textarea'
 
@@ -29,6 +29,7 @@ export const NewEmployeeDialog = () => {
       lastName: '',
       titleAfter: '',
       position: '',
+      note: '',
     },
   })
 
@@ -63,6 +64,7 @@ export const NewEmployeeDialog = () => {
                 <FormControl>
                   <Input {...field} />
                 </FormControl>
+                <FormMessage />
               </FormItem>
             )} />
             <FormField name="firstName" control={form.control} render={({field}) => (
@@ -73,6 +75,7 @@ export const NewEmployeeDialog = () => {
                 <FormControl>
                   <Input {...field} />
                 </FormControl>
+                <FormMessage />
               </FormItem>
             )} />
             <FormField name="lastName" control={form.control} render={({field}) => (
@@ -83,6 +86,7 @@ export const NewEmployeeDialog = () => {
                 <FormControl>
                   <Input {...field} />
                 </FormControl>
+                <FormMessage />
               </FormItem>
             )} />
             <FormField name="titleAfter" control={form.control} render={({field}) => (
@@ -93,6 +97,7 @@ export const NewEmployeeDialog = () => {
                 <FormControl>
                   <Input {...field} />
                 </FormControl>
+                <FormMessage />
               </FormItem>
             )} />
             <FormField name="position" control={form.control} render={({field}) => (
@@ -107,11 +112,12 @@ export const NewEmployeeDialog = () => {
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent className="bg-white">
-                    {positionsData.map(({value, label}) => (
-                      <SelectItem key={value} value={value}>{label}</SelectItem>),
+                    {positionsData.map(({value, label}, index) => (
+                      <SelectItem key={index} value={value}>{label}</SelectItem>),
                     )}
                   </SelectContent>
                 </Select>
+                <FormMessage />
               </FormItem>
             )} />
             <FormField name="note" control={form.control} render={({field}) => (
@@ -122,6 +128,7 @@ export const NewEmployeeDialog = () => {
                 <FormControl>
                   <Textarea {...field} />
                 </FormControl>
+                <FormMessage />
               </FormItem>
             )} />
             <DialogFooter className="sm:justify-end">
@@ -130,7 +137,7 @@ export const NewEmployeeDialog = () => {
                   Close
                 </Button>
               </DialogClose>
-              <Button type="submit" variant="default">Potvrdit</Button>
+              <Button type="submit">Potvrdit</Button>
             </DialogFooter>
           </form>
         </Form>
@@ -148,7 +155,4 @@ const schema = z.object({
   titleAfter: z.string().max(50),
   position: z.string().min(3).max(50),
   note: z.string().max(1000),
-  yearFrom: z.string().nullable(),
-  yearTo: z.string().nullable(),
-  description: z.string().nullable(),
 })
