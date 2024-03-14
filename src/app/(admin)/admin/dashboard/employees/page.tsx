@@ -20,6 +20,7 @@ export default function Page() {
     isDialogOpen,
     setIsDialogOpen,
     reloadData,
+    reloadPositionData,
     positionsData,
     isDeleteDialogOpen,
     setIsDeleteDialogOpen,
@@ -31,6 +32,7 @@ export default function Page() {
 
   useEffect(() => {
     reloadData()
+    reloadPositionData()
   }, [])
 
   const handleDelete = (id: string) => {

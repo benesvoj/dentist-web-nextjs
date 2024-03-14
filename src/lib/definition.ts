@@ -5,6 +5,7 @@ export type Employee = {
   lastName: string,
   titleAfter: string,
   position: string,
+  note: string
 }
 
 export interface EmployeePositionTypesProps {

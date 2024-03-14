@@ -16,6 +16,7 @@ import {Input} from '@/components/ui/input'
 import {addEmployee} from '@/lib/employeeApi'
 import {useEmployeeContext} from '@/app/(admin)/admin/context/EmployeeContext'
 import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from '@/components/ui/select'
+import {Textarea} from '@/components/ui/textarea'
 
 export const NewEmployeeDialog = () => {
   const {isDialogOpen, setIsDialogOpen, reloadData, positionsData} = useEmployeeContext()
@@ -38,6 +39,7 @@ export const NewEmployeeDialog = () => {
       lastName: values.lastName,
       titleAfter: values.titleAfter,
       position: values.position,
+      note: values.note,
     }).then(() => {
       setIsDialogOpen(!isDialogOpen)
       reloadData()
@@ -98,7 +100,6 @@ export const NewEmployeeDialog = () => {
                 <FormLabel>
                   Pozice
                 </FormLabel>
-                {/*<Input {...field} />*/}
                 <Select onValueChange={field.onChange} defaultValue={field.value}>
                   <FormControl>
                     <SelectTrigger>
@@ -111,6 +112,16 @@ export const NewEmployeeDialog = () => {
                     )}
                   </SelectContent>
                 </Select>
+              </FormItem>
+            )} />
+            <FormField name="note" control={form.control} render={({field}) => (
+              <FormItem>
+                <FormLabel>
+                  Poznámka
+                </FormLabel>
+                <FormControl>
+                  <Textarea {...field} />
+                </FormControl>
               </FormItem>
             )} />
             <DialogFooter className="sm:justify-end">
@@ -136,4 +147,8 @@ const schema = z.object({
   lastName: z.string().min(3).max(50),
   titleAfter: z.string().max(50),
   position: z.string().min(3).max(50),
+  note: z.string().max(1000),
+  yearFrom: z.string().nullable(),
+  yearTo: z.string().nullable(),
+  description: z.string().nullable(),
 })

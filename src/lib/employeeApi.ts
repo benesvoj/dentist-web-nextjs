@@ -33,7 +33,7 @@ export async function addEmployee(employee: Employee) {
   noStore()
 
   try {
-    await sql`INSERT INTO employees ("titleBefore", "firstName", "lastName", "titleAfter", "position") VALUES (${employee.titleBefore}, ${employee.firstName}, ${employee.lastName}, ${employee.titleAfter}, ${employee.position})`
+    await sql`INSERT INTO employees ("titleBefore", "firstName", "lastName", "titleAfter", "position", "note") VALUES (${employee.titleBefore}, ${employee.firstName}, ${employee.lastName}, ${employee.titleAfter}, ${employee.position}, ${employee.note})`
   } catch (error) {
     console.error('Database Error:', error)
     throw new Error('Failed to add employee.')
