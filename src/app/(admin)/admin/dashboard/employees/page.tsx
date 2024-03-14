@@ -4,7 +4,7 @@ import {HeadNav} from '@/app/(admin)/admin/dashboard/ui/HeadNav'
 import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from '@/components/ui/table'
 import {fetchEmployees} from '@/lib/employeeApi'
 import {Employees} from '@/lib/definition'
-import {PlusCircleIcon,} from '@heroicons/react/24/outline'
+import {PlusCircleIcon} from '@heroicons/react/24/outline'
 import {useEffect, useState} from 'react'
 import {Button} from '@/components/ui/button'
 import {NewEmployeeDialog} from '@/app/(admin)/admin/dashboard/employees/ui/NewEmployeeDialog'
@@ -13,18 +13,20 @@ export default function Page() {
   const [employeesData, setEmployeesData] = useState<Employees[]>([])
   const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false)
 
+  const loadData = async () => {
+    const data = await fetchEmployees()
+    setEmployeesData(data)
+  }
+
   useEffect(() => {
-    const loadData = async () => {
-      const data = await fetchEmployees()
-      setEmployeesData(data)
-    }
     loadData()
   }, [])
 
   return (
     <>
       <HeadNav title="Seznam zamestnancu a jejich detail">
-        <Button onClick={() => setIsDialogOpen(!isDialogOpen)}><PlusCircleIcon className="h-5 md:mr-4" /> Add new</Button>
+        <Button onClick={() => setIsDialogOpen(!isDialogOpen)}><PlusCircleIcon className="h-5 md:mr-4" /> Add
+          new</Button>
       </HeadNav>
       <Table>
         <TableHeader>
@@ -44,7 +46,7 @@ export default function Page() {
           ))}
         </TableBody>
       </Table>
-      {isDialogOpen && <NewEmployeeDialog isOpen={isDialogOpen} onOpenChange={setIsDialogOpen} />}
+      {isDialogOpen && <NewEmployeeDialog isOpen={isDialogOpen} onOpenChange={setIsDialogOpen} loadData={loadData} />}
     </>
   )
 }

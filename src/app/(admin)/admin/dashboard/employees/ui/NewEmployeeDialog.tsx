@@ -15,9 +15,10 @@ import {Form, FormControl, FormField, FormItem, FormLabel} from '@/components/ui
 import {Input} from '@/components/ui/input'
 import {addEmployee} from '@/lib/employeeApi'
 
-export const NewEmployeeDialog = ({isOpen, onOpenChange}: {
+export const NewEmployeeDialog = ({isOpen, onOpenChange, loadData}: {
   isOpen: boolean,
-  onOpenChange: (isOpen: boolean) => void
+  onOpenChange: (isOpen: boolean) => void,
+  loadData: () => Promise<void>
 }) => {
   const form = useForm<z.infer<typeof schema>>({
     resolver: zodResolver(schema),
@@ -39,6 +40,7 @@ export const NewEmployeeDialog = ({isOpen, onOpenChange}: {
       position: values.position,
     }).then(() => {
       onOpenChange(!isOpen)
+      loadData()
     })
   }
 
@@ -103,7 +105,7 @@ export const NewEmployeeDialog = ({isOpen, onOpenChange}: {
             )} />
             <DialogFooter className="sm:justify-end">
               <DialogClose asChild>
-                <Button onClick={() => console.log('click close button')} type="button" variant="secondary">
+                <Button type="button" variant="secondary">
                   Close
                 </Button>
               </DialogClose>
