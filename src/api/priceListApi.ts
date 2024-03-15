@@ -14,7 +14,18 @@ export async function fetchPriceList() {
     console.error('Database Error:', error)
     throw new Error('Failed to fetch price list data.')
   }
+}
 
+export async function fetchPriceListItemById(id: string) {
+  noStore()
+
+  try {
+    const data = await sql<PriceListRaw>`SELECT * FROM "priceList" WHERE "id" = ${id}`
+    return data.rows[0]
+  } catch (error) {
+    console.error('Database Error:', error)
+    throw new Error('Failed to fetch price list item.')
+  }
 }
 
 export async function addPriceListItem(item: PriceListRaw) {
@@ -26,5 +37,27 @@ export async function addPriceListItem(item: PriceListRaw) {
   } catch (error) {
     console.error('Database Error:', error)
     throw new Error('Failed to add price list item.')
+  }
+}
+
+export async function updatePriceListItem(item: PriceListRaw) {
+  noStore()
+
+  try {
+    await sql<PriceListRaw>`UPDATE "priceList" SET "title" = ${item.title}, "price" = ${item.price}, "order" = ${item.order} WHERE "id" = ${item.id}`
+  } catch (error) {
+    console.error('Database Error:', error)
+    throw new Error('Failed to update price list item.')
+  }
+}
+
+export async function removePriceListItem(id: string) {
+  noStore()
+
+  try {
+    await sql<PriceListRaw>`DELETE FROM "priceList" WHERE "id" = ${id}`
+  } catch (error) {
+    console.error('Database Error:', error)
+    throw new Error('Failed to remove price list item.')
   }
 }

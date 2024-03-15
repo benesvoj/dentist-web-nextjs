@@ -5,23 +5,63 @@ import {PlusCircleIcon} from '@heroicons/react/24/outline'
 import {HeadNav} from '@/app/(admin)/admin/dashboard/ui/HeadNav'
 import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from '@/components/ui/table'
 import {DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger} from '@/components/ui/dropdown-menu'
-import {DotsVerticalIcon} from '@radix-ui/react-icons'
 import {Card, CardContent, CardHeader, CardTitle} from '@/components/ui/card'
 import {usePriceListContext} from '@/context/PriceListContext'
-import {NewPriceListItemDialog} from '@/app/(admin)/admin/dashboard/pricelist/ui/NewPriceListItemDialog'
-import {useEffect} from 'react'
+import {useEffect, useState} from 'react'
+import {fetchPriceListItemById, removePriceListItem} from '@/api/priceListApi'
+import {PriceListRaw} from '@/lib/definition'
+import {useSettingContext} from '@/context/SettingsContext'
+import {DeleteDialog} from '@/app/(admin)/admin/ui/DeleteDialog'
+import {DotsVerticalIcon} from '@radix-ui/react-icons'
+import {PriceListItemDialog} from '@/app/(admin)/admin/dashboard/pricelist/ui/PriceListItemDialog'
 
 export default function Page() {
   const {isDialogOpen, setIsDialogOpen, reloadPriceListData, priceListData} = usePriceListContext()
+  const [isCreating, setIsCreating] = useState(false)
+  const [priceListItem, setPriceListItem] = useState<PriceListRaw | null>(null)
+  const {isDeleteDialogOpen, setIsDeleteDialogOpen} = useSettingContext()
+  const [idForRemoval, setIdForRemoval] = useState<string>('')
 
   useEffect(() => {
     reloadPriceListData()
   }, [])
 
+  const fetchPriceListItem = async (id: string) => {
+    setPriceListItem(await fetchPriceListItemById(id))
+  }
+
+  const handleEdit = (id: string) => {
+    setIsCreating(false)
+    setIsDialogOpen(!isDialogOpen)
+    fetchPriceListItem(id)
+  }
+
+  const handleCreating = () => {
+    setIsCreating(true)
+    setIsDialogOpen(!isDialogOpen)
+  }
+
+  const handleRemoval = (id: string) => {
+    setIdForRemoval(id)
+    setIsDeleteDialogOpen(!isDeleteDialogOpen)
+  }
+
+  const handleConfirmedRemoval = () => {
+    removePriceListItem(idForRemoval)
+      .then(() => {
+        setIsDeleteDialogOpen(!isDeleteDialogOpen)
+        reloadPriceListData()
+      })
+      .catch((error) => {
+        console.error('Error removing price list item:', error)
+      })
+  }
+
+
   return (
     <>
       <HeadNav title="Ceník">
-        <Button onClick={() => setIsDialogOpen(!isDialogOpen)}><PlusCircleIcon className="h-5 md:mr-4" />Přidat záznam</Button>
+        <Button onClick={handleCreating}><PlusCircleIcon className="h-5 md:mr-4" />Přidat záznam</Button>
       </HeadNav>
       <Card className="w-[600px] m-4">
         <CardHeader>
@@ -31,7 +71,8 @@ export default function Page() {
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead></TableHead>
+                <TableHead>Nazev polozky</TableHead>
+                <TableHead>Cena</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -51,8 +92,9 @@ export default function Page() {
                         </Button>
                       </DropdownMenuTrigger>
                       <DropdownMenuContent align="end" className="w-[160px] bg-white">
-                        <DropdownMenuItem>Edit</DropdownMenuItem>
-                        <DropdownMenuItem>Delete</DropdownMenuItem>
+                        {id && <DropdownMenuItem onClick={() => handleEdit(id)}>Edit</DropdownMenuItem>}
+                        {id && <DropdownMenuItem
+                          onClick={() => handleRemoval(id)}>Delete</DropdownMenuItem>}
                       </DropdownMenuContent>
                     </DropdownMenu>
                   </TableCell>
@@ -62,7 +104,8 @@ export default function Page() {
           </Table>
         </CardContent>
       </Card>
-      {isDialogOpen && <NewPriceListItemDialog />}
+      {isDialogOpen && <PriceListItemDialog isCreating={isCreating} priceListItem={priceListItem} />}
+      {isDeleteDialogOpen && <DeleteDialog handleConfirmedRemoval={handleConfirmedRemoval} />}
     </>
   )
 }

@@ -16,40 +16,66 @@ import {useForm} from 'react-hook-form'
 import {zodResolver} from '@hookform/resolvers/zod'
 import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage} from '@/components/ui/form'
 import {Input} from '@/components/ui/input'
-import {addPriceListItem, fetchPriceList} from '@/api/priceListApi'
+import {addPriceListItem, fetchPriceList, updatePriceListItem} from '@/api/priceListApi'
+import {PriceListRaw} from '@/lib/definition'
 
-export const NewPriceListItemDialog = () => {
-  const {isDialogOpen, setIsDialogOpen, priceListData,reloadPriceListData} = usePriceListContext()
+type PriceLIstItemDialogProps= {
+  isCreating: boolean,
+  priceListItem?: PriceListRaw | null
+}
+
+export const PriceListItemDialog = ({isCreating, priceListItem}: PriceLIstItemDialogProps) => {
+  const {isDialogOpen, setIsDialogOpen, priceListData, reloadPriceListData} = usePriceListContext()
+
 
   const maxValue = priceListData.length
 
   const form = useForm<z.infer<typeof schema>>({
     resolver: zodResolver(schema),
-    defaultValues: {
+    defaultValues:  isCreating ? {
       title: '',
       price: '',
       order: Number(maxValue + 1),
-    },
+    }
+    : {
+        title: priceListItem?.title,
+        price: priceListItem?.price,
+        order: priceListItem?.order,
+      }
   })
 
   const onSubmit = (values: z.infer<typeof schema>) => {
-    addPriceListItem({
-      title: values.title,
-      price: values.price,
-      order: Number(values.order),
-    }).then(() => {
-      setIsDialogOpen(!isDialogOpen)
-      reloadPriceListData()
-    }).catch((error) => {
-      console.error('Error adding price list item:', error)
-    })
+    isCreating ? (
+      addPriceListItem({
+        title: values.title,
+        price: values.price,
+        order: Number(values.order),
+      }).then(() => {
+        setIsDialogOpen(!isDialogOpen)
+        reloadPriceListData()
+      }).catch((error) => {
+        console.error('Error adding price list item:', error)
+      })
+      ) : (
+        updatePriceListItem({
+          title: values.title,
+          price: values.price,
+          order: Number(values.order),
+          id: priceListItem?.id
+        }).then(() => {
+          setIsDialogOpen(!isDialogOpen)
+          reloadPriceListData()
+        }).catch((error) => {
+          console.error('Error updating price list item:', error)
+        })
+    )
   }
 
   return (
     <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
       <DialogContent className="bg-white">
         <DialogHeader>
-          <DialogTitle>Nova polozka ceniku</DialogTitle>
+          <DialogTitle>{isCreating ? 'Nova polozka' : 'Editace polozky'} ceniku</DialogTitle>
           <DialogDescription>Vyplnte povinna pole</DialogDescription>
         </DialogHeader>
         <Form {...form}>
