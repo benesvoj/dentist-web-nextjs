@@ -4,6 +4,7 @@ import './ui/globals.css'
 import React from 'react'
 import {EmployeeProvider} from '@/context/EmployeeContext'
 import {PriceListProvider} from '@/context/PriceListContext'
+import {ServicesProvider} from '@/context/ServicesContext'
 
 const font = Roboto_Flex({subsets: ['latin']})
 
@@ -17,11 +18,13 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
     <html lang="en">
     <body className={font.className}>
     <main className="flex flex-col items-center justify-between p-8">
-      <EmployeeProvider>
-        <PriceListProvider>
-          {children}
-        </PriceListProvider>
-      </EmployeeProvider>
+      <ServicesProvider>
+        <EmployeeProvider>
+          <PriceListProvider>
+            {children}
+          </PriceListProvider>
+        </EmployeeProvider>
+      </ServicesProvider>
     </main>
     </body>
     </html>

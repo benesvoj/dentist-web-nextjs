@@ -12,6 +12,7 @@ import {DialogBody} from 'next/dist/client/components/react-dev-overlay/internal
 import {useEmployeeContext} from '@/context/EmployeeContext'
 import {deleteEmployee} from '@/api/employeeApi'
 import {useSettingContext} from '@/context/SettingsContext'
+import {translation} from '@/locales/cs/translation'
 
 type DeleteDialogProps = {
   id?: string
@@ -25,15 +26,15 @@ export const DeleteDialog = ({handleConfirmedRemoval}: DeleteDialogProps) => {
     <Dialog open={isDeleteDialogOpen} onOpenChange={setIsDeleteDialogOpen}>
       <DialogContent className="bg-white">
         <DialogHeader>
-          <DialogTitle>Smazani zaznamu</DialogTitle>
-          <DialogDescription>Opravdu chcete smazat zaznam?</DialogDescription>
+          <DialogTitle>{translation.admin.deleteDialog.title}</DialogTitle>
+          <DialogDescription>{translation.admin.deleteDialog.description}</DialogDescription>
         </DialogHeader>
         <DialogBody>
           <DialogFooter>
             <DialogClose asChild>
-              <Button variant="secondary">Zrusit</Button>
+              <Button variant="secondary">{translation.admin.buttons.cancel}</Button>
             </DialogClose>
-            <Button variant="destructive" onClick={handleConfirmedRemoval}>Smazat</Button>
+            <Button variant="destructive" onClick={handleConfirmedRemoval}>{translation.admin.buttons.delete}</Button>
           </DialogFooter>
         </DialogBody>
       </DialogContent>

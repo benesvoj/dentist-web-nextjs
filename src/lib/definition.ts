@@ -19,3 +19,11 @@ export interface PriceListRaw {
   price: string,
   order: number,
 }
+
+export interface ServiceItem {
+  id?: string
+  title: string
+  description: string
+  image: string
+  order: number
+}

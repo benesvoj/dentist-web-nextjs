@@ -16,7 +16,7 @@ import {Input} from '@/components/ui/input'
 import {useEmployeeContext} from '@/context/EmployeeContext'
 import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from '@/components/ui/select'
 import {Employee} from '@/lib/definition'
-
+// TODO: it is not working always correctly, need to make review
 export const EditEmployeeDialog = ({employee}: {employee: Employee}) => {
   const {isEditDialogOpen, setIsEditDialogOpen, positionsData, reloadData} = useEmployeeContext()
 
