@@ -1,10 +1,9 @@
 'use client'
 import {urls} from '@/app/(web)/lib/urls'
-import {services} from '@/app/(web)/lib/website'
-import Image from 'next/image'
+
 import {PageBody} from '@/app/(web)/ui/PageBody'
 import {ServiceItem} from '@/app/(web)/ui/ServiceItem'
-import {ServicesProvider, useServiceContext} from '@/context/ServicesContext'
+import {useServiceContext} from '@/context/ServicesContext'
 import {useEffect} from 'react'
 
 export default function Services() {
@@ -12,10 +11,10 @@ export default function Services() {
 
   useEffect(() => {
     reloadServicesData()
-  }, [])
+  },[])
 
   return (
-    <ServicesProvider>
+    <>
       <PageBody title={urls[1].title} flexCol>
         {servicesData.map(({id, title, image, description}) => (
           <div key={id} className={'flex flex-nowrap p-4 space-x-4'}>
@@ -24,6 +23,6 @@ export default function Services() {
           </div>
         ))}
       </PageBody>
-    </ServicesProvider>
+    </>
   )
 }

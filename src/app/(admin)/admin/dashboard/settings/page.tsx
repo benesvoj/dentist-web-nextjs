@@ -13,7 +13,7 @@ export default function Page() {
 
   useEffect(() => {
     reloadPositionData()
-  }, [])
+  }, )
 
   return (
     <>

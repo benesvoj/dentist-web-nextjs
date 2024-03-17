@@ -13,7 +13,7 @@ export default function PriceList() {
   }, [])
 
   return (
-    <PriceListProvider>
+    <>
       <PageBody title={urls[2].title}>
         <Table>
           <TableCaption>Uvedené ceny jsou pouze orientační. Konečnou cenu ošetření stanovujeme až po vyšetření a
@@ -34,6 +34,6 @@ export default function PriceList() {
           </TableBody>
         </Table>
       </PageBody>
-    </PriceListProvider>
+    </>
   )
 }

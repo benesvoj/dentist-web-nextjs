@@ -10,9 +10,9 @@ import {NewEmployeeDialog} from '@/app/(admin)/admin/dashboard/employees/ui/NewE
 import {useEmployeeContext} from '@/context/EmployeeContext'
 import {DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger} from '@/components/ui/dropdown-menu'
 import {DotsVerticalIcon} from '@radix-ui/react-icons'
-import {DeleteEmployeeDialog} from '@/app/(admin)/admin/dashboard/employees/ui/DeleteEmployeeDialog'
 import {EditEmployeeDialog} from '@/app/(admin)/admin/dashboard/employees/ui/EditEmployeeDialog'
 import {fetchEmployeeById} from '@/api/employeeApi'
+import {DeleteEmployeeDialog} from '@/app/(admin)/admin/dashboard/employees/ui/DeleteEmployeeDialog'
 
 export default function Page() {
   const {
@@ -46,9 +46,9 @@ export default function Page() {
 
   const handleEdit = (id: string) => {
     setIsEditDialogOpen(!isEditDialogOpen)
-   fetchEmployee(id)
+    fetchEmployee(id)
   }
-  
+
   return (
     <>
       <HeadNav title="Seznam zamestnancu a jejich detail">
