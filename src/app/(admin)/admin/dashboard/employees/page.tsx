@@ -7,7 +7,7 @@ import {PlusCircleIcon} from '@heroicons/react/24/outline'
 import {useEffect, useState} from 'react'
 import {Button} from '@/components/ui/button'
 import {NewEmployeeDialog} from '@/app/(admin)/admin/dashboard/employees/ui/NewEmployeeDialog'
-import {useEmployeeContext} from '@/context/EmployeeContext'
+import {EmployeeProvider, useEmployeeContext} from '@/context/EmployeeContext'
 import {DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger} from '@/components/ui/dropdown-menu'
 import {DotsVerticalIcon} from '@radix-ui/react-icons'
 import {DeleteEmployeeDialog} from '@/app/(admin)/admin/dashboard/employees/ui/DeleteEmployeeDialog'
@@ -50,7 +50,7 @@ export default function Page() {
   }
   
   return (
-    <>
+    <EmployeeProvider>
       <HeadNav title="Seznam zamestnancu a jejich detail">
         <Button onClick={() => setIsDialogOpen(!isDialogOpen)}><PlusCircleIcon className="h-5 md:mr-4" /> Add
           new</Button>
@@ -97,6 +97,6 @@ export default function Page() {
       {isDialogOpen && <NewEmployeeDialog />}
       {isDeleteDialogOpen && <DeleteEmployeeDialog id={selectedId} />}
       {isEditDialogOpen && employee && <EditEmployeeDialog employee={employee} />}
-    </>
+    </EmployeeProvider>
   )
 }

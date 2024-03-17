@@ -6,7 +6,7 @@ import {HeadNav} from '@/app/(admin)/admin/dashboard/ui/HeadNav'
 import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from '@/components/ui/table'
 import {DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger} from '@/components/ui/dropdown-menu'
 import {Card, CardContent, CardHeader, CardTitle} from '@/components/ui/card'
-import {usePriceListContext} from '@/context/PriceListContext'
+import {PriceListProvider, usePriceListContext} from '@/context/PriceListContext'
 import {useEffect, useState} from 'react'
 import {fetchPriceListItemById, removePriceListItem} from '@/api/priceListApi'
 import {PriceListRaw} from '@/lib/definition'
@@ -59,7 +59,7 @@ export default function Page() {
 
 
   return (
-    <>
+    <PriceListProvider>
       <HeadNav title="Ceník">
         <Button onClick={handleCreating}><PlusCircleIcon className="h-5 md:mr-4" />Přidat záznam</Button>
       </HeadNav>
@@ -106,6 +106,6 @@ export default function Page() {
       </Card>
       {isDialogOpen && <PriceListItemDialog isCreating={isCreating} priceListItem={priceListItem} />}
       {isDeleteDialogOpen && <DeleteDialog handleConfirmedRemoval={handleConfirmedRemoval} />}
-    </>
+    </PriceListProvider>
   )
 }

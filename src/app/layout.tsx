@@ -18,13 +18,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
     <html lang="en">
     <body className={font.className}>
     <main className="flex flex-col items-center justify-between p-8">
-      <ServicesProvider>
-        <EmployeeProvider>
-          <PriceListProvider>
-            {children}
-          </PriceListProvider>
-        </EmployeeProvider>
-      </ServicesProvider>
+      {children}
     </main>
     </body>
     </html>
