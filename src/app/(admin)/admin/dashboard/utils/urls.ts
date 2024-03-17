@@ -3,7 +3,6 @@ import {
   CogIcon,
   DocumentDuplicateIcon,
   HomeIcon,
-  UserGroupIcon,
   InformationCircleIcon, BeakerIcon, SparklesIcon, UsersIcon,
 } from '@heroicons/react/24/outline'
 

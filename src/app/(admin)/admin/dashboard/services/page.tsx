@@ -13,7 +13,7 @@ import {useSettingContext} from '@/context/SettingsContext'
 import {DeleteDialog} from '@/app/(admin)/admin/ui/DeleteDialog'
 import {ServiceDialog} from '@/app/(admin)/admin/dashboard/services/ui/ServiceDialog'
 import {useEffect, useState} from 'react'
-import {useServiceContext} from '@/context/ServicesContext'
+import {ServicesProvider, useServiceContext} from '@/context/ServicesContext'
 import {fetchServiceById} from '@/api/servicesApi'
 import {ServiceItem} from '@/lib/definition'
 
@@ -47,7 +47,7 @@ export default function Page() {
   }
 
   return (
-    <>
+    <ServicesProvider>
       <HeadNav title={translation.admin.services.heading}>
         <Button onClick={handleCreating}><PlusCircleIcon className="h-5 md:mr-4" />{translation.admin.buttons.add}</Button>
       </HeadNav>
@@ -100,6 +100,6 @@ export default function Page() {
       </Card>
       {isDialogOpen && <ServiceDialog isCreating={isCreating} serviceItem={serviceItem} />}
       {isDeleteDialogOpen && <DeleteDialog handleConfirmedRemoval={() => console.log('delete')} />}
-    </>
+    </ServicesProvider>
   )
 }
