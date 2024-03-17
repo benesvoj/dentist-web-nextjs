@@ -21,14 +21,14 @@ export default function OurTeam() {
                 {employee.experience ? (
                     <Table>
                       <TableCaption>{employee.description}</TableCaption>
-                      {employee.experience?.map((experience: ExperienceProps) => (
-                        <TableBody>
+                      <TableBody>
+                        {employee.experience?.map((experience: ExperienceProps) => (
                           <TableRow key={experience.id}>
                             <TableCell className="w-1/3 p-0">{experience.from} - {experience.to}</TableCell>
                             <TableCell className="p-2">{experience.text}</TableCell>
                           </TableRow>
-                        </TableBody>
-                      ))}
+                        ))}
+                      </TableBody>
                     </Table>)
                   : null}
               </InfoCard>

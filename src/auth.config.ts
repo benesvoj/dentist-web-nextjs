@@ -1,5 +1,5 @@
 import type {NextAuthConfig} from 'next-auth'
-import {routes} from '@/app/(admin)/admin/dashboard/utils/routes'
+import {routes} from '@/utils/routes'
 
 export const authConfig = {
   pages: {
@@ -8,7 +8,7 @@ export const authConfig = {
   callbacks: {
     authorized({auth, request: {nextUrl}}) {
       const isLoggedIn = !!auth?.user
-      const isOnDashboard = nextUrl.pathname.startsWith('/dashboard')
+      const isOnDashboard = nextUrl.pathname.startsWith(routes.dashboard)
       if (isOnDashboard) {
         if (isLoggedIn) return true
         return false // Redirect unauthenticated users to login page
