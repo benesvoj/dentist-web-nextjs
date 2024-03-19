@@ -11,14 +11,26 @@ import {Separator} from '@/components/ui/separator'
 import {Button} from '@/components/ui/button'
 import {useSettingContext} from '@/context/SettingsContext'
 import {updateSettings} from '@/api/setttingsApi'
+import {useEffect} from 'react'
 
 
 export const GeneralForm = () => {
-  const {loadSettingsData} = useSettingContext()
+  const {loadSettingsData, settingsData} = useSettingContext()
+
+  useEffect(() => {
+    loadSettingsData()
+  }, [])
 
   const form = useForm<z.infer<typeof schema>>({
     resolver: zodResolver(schema),
-    defaultValues: {
+    defaultValues: settingsData ? {
+      address: settingsData.address,
+      email: settingsData.email,
+      phone: settingsData.phone,
+      title: settingsData.title,
+      description: settingsData.description,
+      image: settingsData.image,
+      } : {
       address: '',
       email: '',
       phone: '',
@@ -94,7 +106,18 @@ export const GeneralForm = () => {
                 <FormControl>
                   <Input {...field} />
                 </FormControl>
-                <FormDescription>{translation.general.webDescription}</FormDescription>
+                <FormDescription>{translation.general.webTitleDescription}</FormDescription>
+              </FormItem>
+            )} />
+            <FormField name="description" control={form.control} render={({field}) => (
+              <FormItem>
+                <FormLabel>
+                  {translation.general.webSubtitle}
+                </FormLabel>
+                <FormControl>
+                  <Input {...field} />
+                </FormControl>
+                <FormDescription>{translation.general.webSubtitleDescription}</FormDescription>
               </FormItem>
             )} />
             <Button type="submit">{translation.admin.buttons.save}</Button>

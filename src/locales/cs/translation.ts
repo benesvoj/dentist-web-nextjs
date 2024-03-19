@@ -44,6 +44,8 @@ export const translation = {
     emailDescription: 'Email, na který budou zasílány dotazy z webu',
     phone: 'Telefon',
     webTitle: 'Název webu',
-    webDescription: 'Popis webu',
+    webTitleDescription: 'Název webu, který bude zobrazen v hlavičce',
+    webSubtitle: 'Popis webu',
+    webSubtitleDescription: 'Popis webu',
   },
 }

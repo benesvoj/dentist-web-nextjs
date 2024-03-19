@@ -20,19 +20,14 @@ export async function updateSettings(settings: Settings) {
   noStore()
 
   try {
-
     await sql<Settings>`
-        INSERT INTO "settings" ("address", "email", "phone", "title", "description", "image")
-        VALUES (${settings.address}, ${settings.email}, ${settings.phone}, ${settings.title}, ${settings.description}, ${settings.image}) 
-        await sql<Settings>\`
     INSERT INTO "settings" ("address", "email", "phone", "title", "description", "image")
     VALUES (${settings.address}, ${settings.email}, ${settings.phone}, ${settings.title}, ${settings.description}, ${settings.image}) 
     ON CONFLICT (address) DO 
         UPDATE SET "email" = ${settings.email}, "phone" = ${settings.phone}, "title" = ${settings.title}, "description" = ${settings.description}, "image" = ${settings.image}`
-
   } catch (error) {
     console.error('Database Error:', error)
-    throw new Error('Failed to update settings.')
+    throw new Error('Failed to insert or update settings.')
   }
 }
 
