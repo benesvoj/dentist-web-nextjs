@@ -34,3 +34,12 @@ export type User = {
   email: string;
   password: string;
 };
+
+export interface Settings {
+  address: string
+  email: string
+  phone: string
+  title: string
+  description: string
+  image: string
+}

@@ -12,7 +12,7 @@ export const translation = {
       description: 'Opravdu si přejete záznam smazat?',
     },
     dialog: {
-      newItem : 'Nový záznam',
+      newItem: 'Nový záznam',
       editItem: 'Upravit záznam',
       description: 'Vyplňte formulář pro vytvoření nebo úpravu záznamu',
     },
@@ -22,13 +22,28 @@ export const translation = {
       table: {
         nameAndDescription: 'Název a popis',
         icon: 'Ikona',
-      }
-    }
+      },
+    },
+    settings: {
+      general: {
+        title: 'Obecné nastavení',
+        titleShort: 'Obecné',
+        description: 'Popis',
+      },
+      codeTables: 'Číselníky',
+    },
   },
   general: {
     title: 'Název',
     description: 'Popis',
     image: 'Obrázek',
     order: 'Pořadí zobrazení',
-  }
+    address: 'Adresa',
+    addressDescription: 'Adresa ordinace, která bude zobrazena na webu',
+    email: 'Email',
+    emailDescription: 'Email, na který budou zasílány dotazy z webu',
+    phone: 'Telefon',
+    webTitle: 'Název webu',
+    webDescription: 'Popis webu',
+  },
 }
