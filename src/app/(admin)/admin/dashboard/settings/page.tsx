@@ -3,6 +3,7 @@ import {EmployeeTypeCard} from '@/app/(admin)/admin/dashboard/settings/ui/Employ
 import {Tabs, TabsContent, TabsList, TabsTrigger} from '@/components/ui/tabs'
 import {translation} from '@/locales/cs/translation'
 import {GeneralForm} from '@/app/(admin)/admin/dashboard/settings/ui/GeneralForm'
+import {CooperationTypeCard} from '@/app/(admin)/admin/dashboard/settings/ui/CooperationTypeCard'
 
 export default function Page() {
 
@@ -18,8 +19,9 @@ export default function Page() {
           <TabsContent value={'general'}>
             <GeneralForm />
           </TabsContent>
-          <TabsContent value={'codeTables'}>
+          <TabsContent value={'codeTables'} className='flex flex-wrap gap-4'>
             <EmployeeTypeCard />
+            <CooperationTypeCard />
           </TabsContent>
         </Tabs>
       </div>

@@ -1,9 +1,12 @@
 import {EmployeeProvider} from '@/context/EmployeeContext'
+import {CooperationProvider} from '@/context/CooperationContext'
 
 export default function Layout({children}: {children: React.ReactNode}) {
   return (
-    <EmployeeProvider>
-      {children}
-    </EmployeeProvider>
+    <CooperationProvider>
+      <EmployeeProvider>
+        {children}
+      </EmployeeProvider>
+    </CooperationProvider>
   )
 }

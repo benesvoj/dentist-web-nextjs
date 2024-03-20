@@ -43,3 +43,20 @@ export interface Settings {
   description: string
   image: string
 }
+
+export interface Cooperation {
+  id?: string
+  name: string
+  address: string
+  phone: string
+  email: string
+  www: string
+  description: string
+  cooperationType: CooperationType
+}
+
+export type CooperationType = {
+  id?: string
+  name: string
+  nameShort: string
+}

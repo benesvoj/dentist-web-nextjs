@@ -31,10 +31,19 @@ export const translation = {
         description: 'Popis',
       },
       codeTables: 'Číselníky',
+      cooperationTypes: {
+        title: 'Typy spoluprací',
+        description: 'Popis',
+        table: {
+          name: 'Název',
+          nameShort: 'Zkrácený název',
+        },
+      },
     },
   },
   general: {
     title: 'Název',
+    titleShort: 'Zkrácený název',
     description: 'Popis',
     image: 'Obrázek',
     order: 'Pořadí zobrazení',
