@@ -2,11 +2,11 @@ import {PersonCard} from '@/app/(web)/cooperation/ui/PersonCard'
 import React from 'react'
 import {CooperationProps, CooperationTypeEnum} from '@/app/(web)/lib/types'
 import Image from 'next/image'
+import {Cooperation, CooperationType} from '@/lib/definition'
 
 type CooperationSectionProps = {
-  title: string
-  data: CooperationProps[]
-  type: CooperationTypeEnum
+  cooperationType: CooperationType
+  cooperationData: Cooperation[]
 }
 
 const Heading = ({children}: {children: React.ReactNode}) => {
@@ -24,17 +24,17 @@ const Heading = ({children}: {children: React.ReactNode}) => {
   )
 }
 
-export const CooperationSection = ({title, data, type}: CooperationSectionProps) => {
+export const CooperationSection = ({cooperationType, cooperationData}: CooperationSectionProps) => {
   return (
     <>
-      <Heading>{title}</Heading>
+      <Heading>{cooperationType.name}</Heading>
       <div className={'flex gap-4'}>
-        {data
-          .filter((item) => item.type === type)
+        {cooperationData
+          .filter((item) => item.cooperationTypeId === cooperationType.id)
           .map((item) => (
             <PersonCard
               key={item.id}
-              title={item.title}
+              title={item.name}
               address={item.address}
               subtitle={item.description}
               phone={item.phone}
