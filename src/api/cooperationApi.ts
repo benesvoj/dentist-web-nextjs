@@ -9,6 +9,7 @@ export async function fetchCooperation() {
 
   try {
     const data = await sql<Cooperation>`SELECT * FROM cooperation`
+
     return data.rows
   } catch (error) {
     console.error('Failed to fetch cooperation data:', error)
@@ -32,11 +33,23 @@ export async function addCooperation(cooperation: Cooperation) {
   noStore()
 
   try {
-    await sql`INSERT INTO cooperation ("name", "address", "phone", "email", "www", "description", "cooperationType") VALUES (${cooperation.name}, ${cooperation.address}, ${cooperation.phone}, ${cooperation.email}, ${cooperation.www}, ${cooperation.description}, ${cooperation.cooperationType.id})`
+    await sql`INSERT INTO cooperation ("name", "address", "phone", "email", "www", "description", "cooperationTypeId") VALUES (${cooperation.name}, ${cooperation.address}, ${cooperation.phone}, ${cooperation.email}, ${cooperation.www}, ${cooperation.description}, ${cooperation.cooperationTypeId})`
   } catch (error) {
     console.error('Failed to add cooperation:', error)
     throw new Error('Failed to add cooperation.')
   }
+}
+
+export async function updateCooperation(cooperation: Cooperation) {
+  noStore()
+
+  try {
+    await sql`UPDATE cooperation SET "name" = ${cooperation.name}, "address" = ${cooperation.address}, "phone" = ${cooperation.phone}, "email" = ${cooperation.email}, "www" = ${cooperation.www}, "description" = ${cooperation.description}, "cooperationTypeId" = ${cooperation.cooperationTypeId} WHERE id = ${cooperation.id}`
+  } catch (error) {
+    console.error('Failed to update cooperation:', error)
+    throw new Error('Failed to update cooperation.')
+  }
+
 }
 
 export async function deleteCooperation(id: string) {

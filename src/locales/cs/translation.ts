@@ -6,6 +6,7 @@ export const translation = {
       add: 'Přidat',
       edit: 'Upravit',
       delete: 'Smazat',
+      openMenu: 'Otevřít menu',
     },
     deleteDialog: {
       title: 'Smazání záznamu',
@@ -23,6 +24,10 @@ export const translation = {
         nameAndDescription: 'Název a popis',
         icon: 'Ikona',
       },
+    },
+    cooperation: {
+      heading: 'Seznam spoluprací a jejich detail',
+      cooperationType: 'Typ spolupráce',
     },
     settings: {
       general: {
@@ -56,5 +61,8 @@ export const translation = {
     webTitleDescription: 'Název webu, který bude zobrazen v hlavičce',
     webSubtitle: 'Popis webu',
     webSubtitleDescription: 'Popis webu',
+    webUrl: 'URL webu',
+    returnBackOnWeb: 'Vrátit se zpět na web',
+    login: 'Přihlášení',
   },
 }

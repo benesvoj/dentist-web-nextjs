@@ -52,11 +52,11 @@ export interface Cooperation {
   email: string
   www: string
   description: string
-  cooperationType: CooperationType
+  cooperationTypeId: string
 }
 
 export type CooperationType = {
-  id?: string
+  id: string
   name: string
   nameShort: string
 }

@@ -34,6 +34,7 @@ export const EditEmployeeDialog = ({employee}: {employee: Employee}) => {
   const onSubmit = (values: z.infer<typeof schema>) => {
    console.log('storing edited values', values)
     reloadData()
+    // TODO: implement updateEmployee function
   }
 
   return (

@@ -1,9 +1,7 @@
 'use client'
 
 import {createContext, ReactNode, useContext, useState} from 'react'
-import {Cooperation, CooperationType, Settings} from '@/lib/definition'
-import {fetchServices} from '@/api/servicesApi'
-import {fetchSettings} from '@/api/setttingsApi'
+import {Cooperation, CooperationType} from '@/lib/definition'
 import {fetchCooperation, fetchCooperationTypes} from '@/api/cooperationApi'
 
 interface CooperationContextProps {
@@ -18,7 +16,6 @@ interface CooperationContextProps {
 const CooperationContext = createContext<CooperationContextProps | undefined>(undefined)
 
 export const CooperationProvider = ({children}: {children: ReactNode}) => {
-  const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState<boolean>(false)
   const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false)
   const [cooperationData, setCooperationData] = useState<Cooperation[]>([])
   const [cooperationTypes, setCooperationTypes] = useState<CooperationType[]>([])
@@ -44,7 +41,7 @@ export const useCooperationContext = () => {
   const context = useContext(CooperationContext)
 
   if (context === undefined) {
-    throw new Error('useSettingsContext must be used within a SettingsProvider')
+    throw new Error('useCooperationContext must be used within a CooperationProvider')
   }
   return context
 }

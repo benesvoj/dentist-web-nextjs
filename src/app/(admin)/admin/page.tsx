@@ -10,6 +10,7 @@ import {authenticate} from '@/lib/actions'
 import {useFormStatus, useFormState} from 'react-dom'
 import {AtSymbolIcon, ExclamationCircleIcon, KeyIcon} from '@heroicons/react/24/solid'
 import {routes} from '@/utils/routes'
+import {translation} from '@/locales/cs/translation'
 
 export default function Page() {
   const router = useRouter()
@@ -79,8 +80,8 @@ export default function Page() {
           )}
         </div>
         <ButtonGroup className="mt-4">
-          <Button label="Vrátit zpět" type="button" variant="secondary" onClick={() => router.push(routes.home)} />
-          <Button type="submit" label="Přihlásit se" aria-disabled={pending} />
+          <Button label={translation.general.returnBackOnWeb} type="button" variant="secondary" onClick={() => router.push(routes.home)} />
+          <Button type="submit" label={translation.general.login} aria-disabled={pending} />
         </ButtonGroup>
       </form>
     </div>
