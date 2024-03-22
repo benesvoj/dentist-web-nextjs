@@ -2,7 +2,6 @@
 
 import {PageBody} from '@/app/(web)/ui/PageBody'
 import {urls} from '@/app/(web)/lib/urls'
-import {CooperationConfig} from '@/app/(web)/lib/website'
 import React, {useEffect} from 'react'
 import {CooperationSection} from '@/app/(web)/cooperation/ui/CooperationSection'
 import {useCooperationContext} from '@/context/CooperationContext'
