@@ -9,10 +9,8 @@ export const metadata: Metadata = {
 
 export default function Layout({children}: {children: React.ReactNode}) {
   return (
-    <div className="w-full h-80">
       <SettingProvider>
         {children}
       </SettingProvider>
-    </div>
   )
 }

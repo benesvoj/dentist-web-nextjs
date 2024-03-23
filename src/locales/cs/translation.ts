@@ -1,48 +1,61 @@
 export const translation = {
-  admin: {
-    buttons: {
-      save: 'Uložit',
-      cancel: 'Zrušit',
-      add: 'Přidat',
-      edit: 'Upravit',
-      delete: 'Smazat',
-      openMenu: 'Otevřít menu',
-    },
-    deleteDialog: {
-      title: 'Smazání záznamu',
-      description: 'Opravdu si přejete záznam smazat?',
-    },
-    dialog: {
-      newItem: 'Nový záznam',
-      editItem: 'Upravit záznam',
-      description: 'Vyplňte formulář pro vytvoření nebo úpravu záznamu',
-    },
-    services: {
-      heading: 'Nabízené služby ordinace',
-      title: 'Služby',
-      table: {
-        nameAndDescription: 'Název a popis',
-        icon: 'Ikona',
+    admin: {
+      buttons: {
+        save: 'Uložit',
+        cancel: 'Zrušit',
+        add: 'Přidat',
+        edit: 'Upravit',
+        delete: 'Smazat',
+        openMenu: 'Otevřít menu',
       },
-    },
-    cooperation: {
-      heading: 'Seznam spoluprací a jejich detail',
-      cooperationType: 'Typ spolupráce',
-    },
-    settings: {
-      general: {
-        title: 'Obecné nastavení',
-        titleShort: 'Obecné',
-        description: 'Popis',
+      deleteDialog: {
+        title: 'Smazání záznamu',
+        description: 'Opravdu si přejete záznam smazat?',
       },
-      codeTables: 'Číselníky',
-      cooperationTypes: {
-        title: 'Typy spoluprací',
-        description: 'Popis',
+      dialog: {
+        newItem: 'Nový záznam',
+        editItem: 'Upravit záznam',
+        description: 'Vyplňte formulář pro vytvoření nebo úpravu záznamu',
+      },
+      services: {
+        heading: 'Nabízené služby ordinace',
+        title: 'Služby',
         table: {
-          name: 'Název',
-          nameShort: 'Zkrácený název',
+          nameAndDescription: 'Název a popis',
+          icon: 'Ikona',
         },
+      },
+      cooperation: {
+        heading: 'Seznam spoluprací a jejich detail',
+        cooperationType: 'Typ spolupráce',
+      },
+      settings: {
+        general: {
+          title: 'Obecné nastavení',
+          titleShort: 'Obecné',
+          description: 'Popis',
+        },
+        codeTables: 'Číselníky',
+        cooperationTypes: {
+          title: 'Typy spoluprací',
+          description: 'Popis',
+          table: {
+            name: 'Název',
+            nameShort: 'Zkrácený název',
+          },
+        },
+      },
+      dashboard: {
+        title: 'Dashboard',
+        heading: 'Dashboard',
+        news: {
+          title: 'Novinky',
+          description: 'Přehled novinek',
+          dateFrom: 'Datum od',
+          dateTo: 'Datum do',
+          message: 'Zpráva',
+          addNew: 'Přidat novinku',
+          addNewDescription: 'Přidat novou novinku',
       },
     },
   },
@@ -65,4 +78,4 @@ export const translation = {
     returnBackOnWeb: 'Vrátit se zpět na web',
     login: 'Přihlášení',
   },
-}
+  }

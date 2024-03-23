@@ -7,7 +7,7 @@ import {Separator} from '@radix-ui/react-separator'
 
 export default function Layout({children}: {children: React.ReactNode}) {
   return (
-    <div className="bg-gray-100 rounded p-4 w-[1024px]">
+    <div className="bg-gray-100 rounded p-4 w-[1024px] my-8">
       <Header />
       <Separator className="my-4" />
       {children}

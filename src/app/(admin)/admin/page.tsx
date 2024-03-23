@@ -19,7 +19,7 @@ export default function Page() {
   const {pending} = useFormStatus()
 
   return (
-    <div className="flex justify-center items-center h-full">
+    <div className="flex justify-center items-center h-screen w-screen">
       <form
         className="bg-white p-10 rounded-lg shadow-lg w-[400px]"
         action={dispatch}

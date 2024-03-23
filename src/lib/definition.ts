@@ -60,3 +60,10 @@ export type CooperationType = {
   name: string
   nameShort: string
 }
+
+export interface News {
+  id?: string
+  dateFrom: string
+  dateTo: string
+  message: string
+}
