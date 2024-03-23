@@ -56,7 +56,7 @@ export interface Cooperation {
 }
 
 export type CooperationType = {
-  id: string
+  id?: string
   name: string
   nameShort: string
 }
