@@ -165,7 +165,7 @@ export const CooperationItemDialog = ({isCreating, cooperationItem}: Cooperation
                   </FormControl>
                   <SelectContent>
                     {cooperationTypes.map(({id, name}) => (
-                      <SelectItem key={id} value={id}>{name}</SelectItem>
+                      <SelectItem key={id} value={id || ''}>{name}</SelectItem>
                     ))}
                   </SelectContent>
                 </Select>
