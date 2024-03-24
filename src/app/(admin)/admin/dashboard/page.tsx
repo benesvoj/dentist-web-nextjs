@@ -15,16 +15,18 @@ import {DeleteDialog} from '@/app/(admin)/admin/ui/DeleteDialog'
 import {useEffect, useState} from 'react'
 import {deleteNews} from '@/api/dashboardApi'
 import {News} from '@/lib/definition'
+import {PageSetupCard} from '@/app/(admin)/admin/dashboard/ui/PageSetupCard'
 
 export default function Page() {
   const {isDialogOpen, setIsDialogOpen, newsData, loadNewsData} = useDashboardContext()
-  const {isDeleteDialogOpen, setIsDeleteDialogOpen} = useSettingContext()
+  const {isDeleteDialogOpen, setIsDeleteDialogOpen, contentSetupData, loadContentSetupData} = useSettingContext()
   const [selectedId, setSelectedId] = useState<string | null>(null)
   const [isCreating, setIsCreating] = useState(false)
   const [itemToEdit, setItemToEdit] = useState<News | null>(null)
 
   useEffect(() => {
     loadNewsData()
+    loadContentSetupData()
   }, [])
 
   const handleEdit = (id: string) => {
@@ -69,7 +71,7 @@ export default function Page() {
   return (
     <>
       <HeadNav title={translation.admin.dashboard.heading} />
-      <div className="flex gap-4 mt-4">
+      <div className="flex flex-wrap gap-4 mt-4">
         <Card className="w-2/3">
           <CardHeader className="flex flex-row justify-between">
             <div className="space-y-2">
@@ -121,15 +123,7 @@ export default function Page() {
             </Table>
           </CardContent>
         </Card>
-        <Card>
-          <CardHeader>
-            <CardTitle>{translation.admin.dashboard.news.title}</CardTitle>
-            <CardDescription>{translation.admin.dashboard.news.description}</CardDescription>
-          </CardHeader>
-          <CardContent>
-
-          </CardContent>
-        </Card>
+        <PageSetupCard data={contentSetupData} loadData={loadContentSetupData} />
       </div>
       {isDialogOpen && <NewsDialog isCreating={isCreating} data={itemToEdit} />}
       {isDeleteDialogOpen && <DeleteDialog handleConfirmedRemoval={handleConfirmedRemoval} />}

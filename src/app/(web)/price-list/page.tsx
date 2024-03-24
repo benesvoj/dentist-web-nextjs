@@ -1,6 +1,6 @@
 'use client'
 import {PageBody} from '@/app/(web)/ui/PageBody'
-import {urls} from '@/app/(web)/lib/urls'
+import {urls} from '@/lib/urls'
 import {Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow} from '@/components/ui/table'
 import {PriceListProvider, usePriceListContext} from '@/context/PriceListContext'
 import {useEffect} from 'react'

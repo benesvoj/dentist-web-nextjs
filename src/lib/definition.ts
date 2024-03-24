@@ -67,3 +67,9 @@ export interface News {
   dateTo: string
   message: string
 }
+
+export interface ContentSetup {
+  id?: string
+  name: string
+  isVisible: boolean
+}

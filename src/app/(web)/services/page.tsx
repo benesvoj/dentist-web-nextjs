@@ -1,5 +1,5 @@
 'use client'
-import {urls} from '@/app/(web)/lib/urls'
+import {urls} from '@/lib/urls'
 
 import {PageBody} from '@/app/(web)/ui/PageBody'
 import {ServiceItem} from '@/app/(web)/ui/ServiceItem'

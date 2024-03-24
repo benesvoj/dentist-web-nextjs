@@ -25,6 +25,7 @@ export type UrlsProps = {
   url?: string
   description?: string
   subPages?: UrlsProps[]
+  contentPage?: string
 }
 
 export type ExperienceProps = {

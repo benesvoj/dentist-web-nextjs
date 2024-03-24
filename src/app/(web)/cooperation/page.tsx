@@ -1,7 +1,7 @@
 'use client'
 
 import {PageBody} from '@/app/(web)/ui/PageBody'
-import {urls} from '@/app/(web)/lib/urls'
+import {urls} from '@/lib/urls'
 import React, {useEffect} from 'react'
 import {CooperationSection} from '@/app/(web)/cooperation/ui/CooperationSection'
 import {useCooperationContext} from '@/context/CooperationContext'

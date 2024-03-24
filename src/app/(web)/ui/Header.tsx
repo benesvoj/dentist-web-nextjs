@@ -1,15 +1,16 @@
 import {Logo} from '@/app/(web)/ui/Logo'
-import {urls} from '@/app/(web)/lib/urls'
+import {urls} from '@/lib/urls'
 import {website} from '@/app/(web)/lib/website'
 import {NavBar} from '@/app/(web)/ui/NavBar'
 import {useSettingContext} from '@/context/SettingsContext'
 import {useEffect} from 'react'
 
 export const Header = () => {
-  const {settingsData, loadSettingsData} = useSettingContext()
+  const {settingsData, loadSettingsData, contentSetupData, loadContentSetupData} = useSettingContext()
 
   useEffect(() => {
     loadSettingsData()
+    loadContentSetupData()
   }, [])
 
   return (
@@ -28,11 +29,11 @@ export const Header = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Logo title={settingsData.title} subtitle={settingsData.description}/>
+            <Logo title={settingsData.title} subtitle={settingsData.description} />
           </a>
         </div>
       </div>
-      <NavBar navItems={urls} />
+      <NavBar navItems={urls} data={contentSetupData} />
     </header>
-)
+  )
 }

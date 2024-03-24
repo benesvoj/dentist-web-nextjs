@@ -1,5 +1,5 @@
 import {PageBody} from '@/app/(web)/ui/PageBody'
-import {urls} from '@/app/(web)/lib/urls'
+import {urls} from '@/lib/urls'
 import {employees} from '@/app/(web)/lib/website'
 import {Card} from '@/app/(web)/ui/Card'
 import {ExperienceProps} from '@/app/(web)/lib/types'
