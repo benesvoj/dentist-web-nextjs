@@ -21,8 +21,6 @@ interface NavBarProps {
 
 export const NavBar = ({navItems, data}: NavBarProps) => {
 
-  console.log('navBar data', data)
-
   return (
     <NavigationMenu>
       <NavigationMenuList>
