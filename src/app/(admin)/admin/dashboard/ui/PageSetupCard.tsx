@@ -20,31 +20,28 @@ type PageSetupCardProps = {
 export const PageSetupCard = ({data: contentSetupData, loadData: loadContentSetupData}: PageSetupCardProps) => {
   const {toast} = useToast()
 
-  useEffect(() => {
-    loadContentSetupData()
-  }, [])
-
   const form = useForm<z.infer<typeof schema>>({
     resolver: zodResolver(schema),
-    defaultValues: {
-      home: !contentSetupData.find((content) => content.name === 'home' && content.isVisible),
-      services: !contentSetupData.find((content) => content.name === 'services' && content.isVisible),
-      priceList: !contentSetupData.find((content) => content.name === 'priceList' && content.isVisible),
-      ourTeam: !contentSetupData.find((content) => content.name === 'ourTeam' && content.isVisible),
-      cooperation: !contentSetupData.find((content) => content.name === 'cooperation' && content.isVisible),
-      contact: !contentSetupData.find((content) => content.name === 'contact' && content.isVisible),
-      news: !contentSetupData.find((content) => content.name === 'news' && content.isVisible),
-      recommendation: !contentSetupData.find((content) => content.name === 'recommendation' && content.isVisible),
-    },
   })
+
+  useEffect(() => {
+    form.reset({
+        home: !!contentSetupData.find((content) => content.name === 'home' && content.isVisible),
+        services: !!contentSetupData.find((content) => content.name === 'services' && content.isVisible),
+        priceList: !!contentSetupData.find((content) => content.name === 'priceList' && content.isVisible),
+        ourTeam: !!contentSetupData.find((content) => content.name === 'ourTeam' && content.isVisible),
+        cooperation: !!contentSetupData.find((content) => content.name === 'cooperation' && content.isVisible),
+        contact: !!contentSetupData.find((content) => content.name === 'contact' && content.isVisible),
+        news: !!contentSetupData.find((content) => content.name === 'news' && content.isVisible),
+        recommendation: !!contentSetupData.find((content) => content.name === 'recommendation' && content.isVisible),
+    })
+  }, [contentSetupData, form. reset])
 
   function onSubmit(values: z.infer<typeof schema>) {
     const updatedContentSetup = Object.entries(values).map(([key, value]) => ({
       name: key,
       isVisible: value,
     }))
-
-    console.log(updatedContentSetup)
 
     updateContentSetup(updatedContentSetup)
       .then(() => {
