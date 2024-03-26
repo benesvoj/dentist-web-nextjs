@@ -68,7 +68,11 @@ export const translation = {
       contentSetupUpdated: 'Nastavení stránek bylo úspěšně aktualizováno',
       error: 'Chyba',
       failedToUpdateContentSetup: 'Nepodařilo se aktualizovat nastavení stránek',
+      settingsUpdated: 'Nastavení bylo úspěšně aktualizováno',
     },
+    officeHours: {
+      title: 'Ordinační doba',
+    }
   },
   general: {
     title: 'Název',
@@ -88,5 +92,14 @@ export const translation = {
     webUrl: 'URL webu',
     returnBackOnWeb: 'Vrátit se zpět na web',
     login: 'Přihlášení',
+    weekdays: {
+      monday: 'Pondělí',
+      tuesday: 'Úterý',
+      wednesday: 'Středa',
+      thursday: 'Čtvrtek',
+      friday: 'Pátek',
+      saturday: 'Sobota',
+      sunday: 'Neděle',
+    },
   },
 }

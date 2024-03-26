@@ -21,10 +21,10 @@ export async function updateSettings(settings: Settings) {
 
   try {
     await sql<Settings>`
-    INSERT INTO "settings" ("address", "email", "phone", "title", "description", "image")
-    VALUES (${settings.address}, ${settings.email}, ${settings.phone}, ${settings.title}, ${settings.description}, ${settings.image}) 
+    INSERT INTO "settings" ("address", "email", "phone", "title", "description", "image", "officeHours")
+    VALUES (${settings.address}, ${settings.email}, ${settings.phone}, ${settings.title}, ${settings.description}, ${settings.image}, ${JSON.stringify(settings.officeHours)}) 
     ON CONFLICT (address) DO 
-        UPDATE SET "email" = ${settings.email}, "phone" = ${settings.phone}, "title" = ${settings.title}, "description" = ${settings.description}, "image" = ${settings.image}`
+        UPDATE SET "email" = ${settings.email}, "phone" = ${settings.phone}, "title" = ${settings.title}, "description" = ${settings.description}, "image" = ${settings.image}, "officeHours" = ${JSON.stringify(settings.officeHours)}`
   } catch (error) {
     console.error('Database Error:', error)
     throw new Error('Failed to insert or update settings.')

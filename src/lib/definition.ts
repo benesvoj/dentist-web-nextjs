@@ -42,6 +42,59 @@ export interface Settings {
   title: string
   description: string
   image: string
+  officeHours: OfficeHours
+}
+export interface OfficeHours {
+  monday: {
+    morning: {
+      from: string
+      to: string
+    }
+    afternoon: {
+      from: string
+      to: string
+    }
+  }
+  tuesday: {
+    morning: {
+      from: string
+      to: string
+    }
+    afternoon: {
+      from: string
+      to: string
+    }
+  }
+  wednesday: {
+    morning: {
+      from: string
+      to: string
+    }
+    afternoon: {
+      from: string
+      to: string
+    }
+  }
+  thursday: {
+    morning: {
+      from: string
+      to: string
+    }
+    afternoon: {
+      from: string
+      to: string
+    }
+  }
+  friday: {
+    morning: {
+      from: string
+      to: string
+    }
+    afternoon: {
+      from: string
+      to: string
+    }
+  }
 }
 
 export interface Cooperation {
