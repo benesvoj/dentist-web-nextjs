@@ -25,19 +25,21 @@ export const NavBar = ({navItems, data}: NavBarProps) => {
     <NavigationMenu>
       <NavigationMenuList>
         {navItems
-          .map(({id, url, title, subPages, contentPage}) => (
+          .map(({id, url, title, subPages, contentPage}) => {
+            const showLink = (data.find((data) => data?.name === contentPage && data?.isVisible) || {}).isVisible
+
+            return (
             !subPages
-              ? (data.find((data) => data?.name === contentPage && data?.isVisible) && (
+              ? showLink && (
                   <NavigationMenuItem key={id}>
                     <Link href={url || '/'} legacyBehavior passHref>
                       <NavigationMenuLink className={navigationMenuStyle}>
                         {title}
                       </NavigationMenuLink>
                     </Link>
-                  </NavigationMenuItem>)
-
+                  </NavigationMenuItem>
               )
-              : (
+              : showLink && (
                 <NavigationMenuItem key={id}>
                   <NavigationMenuTrigger>{title}</NavigationMenuTrigger>
                   <NavigationMenuContent className="bg-white">
@@ -55,7 +57,7 @@ export const NavBar = ({navItems, data}: NavBarProps) => {
                   </NavigationMenuContent>
                 </NavigationMenuItem>
               )
-          ))}
+          )})}
       </NavigationMenuList>
     </NavigationMenu>
   )

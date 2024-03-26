@@ -6,7 +6,6 @@ export default function Home() {
 
   return (
     <div className='flex flex-col gap-4'>
-      {/*<div className={'w-4/5 h-80 bg-blue-500 m-4'}></div>*/}
       <ServicesSection />
       <InfoSection />
       <InsuranceCompaniesBar />
