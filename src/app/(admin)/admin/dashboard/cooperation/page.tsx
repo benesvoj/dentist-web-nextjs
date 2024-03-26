@@ -17,13 +17,16 @@ import {deleteCooperation} from '@/api/cooperationApi'
 
 export default function Page() {
   const {
-    setIsDialogOpen,
-    isDialogOpen,
     cooperationData,
     loadCooperationData,
     cooperationTypes,
   } = useCooperationContext()
-  const {isDeleteDialogOpen, setIsDeleteDialogOpen} = useSettingContext()
+  const {
+    isDeleteDialogOpen,
+    setIsDeleteDialogOpen,
+    setIsDialogOpen,
+    isDialogOpen,
+  } = useSettingContext()
   const [isCreating, setIsCreating] = useState(false)
   const [selectedId, setSelectedId] = useState<string | null>(null)
   const [itemToEdit, setItemToEdit] = useState<Cooperation | null>(null)
@@ -121,7 +124,8 @@ export default function Page() {
                     {id && <DropdownMenuItem
                       onClick={() => handleEdit(id)}>{translation.admin.buttons.edit}</DropdownMenuItem>}
                     {id &&
-                      <DropdownMenuItem onClick={() => handleDelete(id)}>{translation.admin.buttons.delete}</DropdownMenuItem>}
+                      <DropdownMenuItem
+                        onClick={() => handleDelete(id)}>{translation.admin.buttons.delete}</DropdownMenuItem>}
                   </DropdownMenuContent>
                 </DropdownMenu>
               </TableCell>

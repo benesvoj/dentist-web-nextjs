@@ -21,6 +21,7 @@ import {addCooperation, fetchCooperationById, updateCooperation} from '@/api/coo
 import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from '@/components/ui/select'
 import {useEffect, useState} from 'react'
 import {Cooperation} from '@/lib/definition'
+import {useSettingContext} from '@/context/SettingsContext'
 
 type CooperationItemDialogProps = {
   isCreating: boolean
@@ -30,11 +31,10 @@ type CooperationItemDialogProps = {
 export const CooperationItemDialog = ({isCreating, cooperationItem}: CooperationItemDialogProps) => {
   const {
     loadCooperationData,
-    isDialogOpen,
-    setIsDialogOpen,
     cooperationTypes,
     loadCooperationTypes,
   } = useCooperationContext()
+  const {isDialogOpen, setIsDialogOpen} = useSettingContext()
 
   useEffect(() => {
     loadCooperationTypes()

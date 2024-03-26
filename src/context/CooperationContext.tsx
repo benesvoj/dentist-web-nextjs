@@ -9,14 +9,11 @@ interface CooperationContextProps {
   loadCooperationData: () => void
   cooperationTypes: CooperationType[]
   loadCooperationTypes: () => void
-  isDialogOpen: boolean
-  setIsDialogOpen: (value: boolean) => void
 }
 
 const CooperationContext = createContext<CooperationContextProps | undefined>(undefined)
 
 export const CooperationProvider = ({children}: {children: ReactNode}) => {
-  const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false)
   const [cooperationData, setCooperationData] = useState<Cooperation[]>([])
   const [cooperationTypes, setCooperationTypes] = useState<CooperationType[]>([])
 
@@ -31,7 +28,7 @@ export const CooperationProvider = ({children}: {children: ReactNode}) => {
   }
 
   return (
-    <CooperationContext.Provider value={{cooperationData, loadCooperationData, cooperationTypes, loadCooperationTypes, isDialogOpen, setIsDialogOpen}}>
+    <CooperationContext.Provider value={{cooperationData, loadCooperationData, cooperationTypes, loadCooperationTypes}}>
       {children}
     </CooperationContext.Provider>
   )
