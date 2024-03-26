@@ -83,6 +83,12 @@ export const translation = {
         employeeDeletedDescription: 'Zaměstnanec byl úspěšně smazán.',
       },
     },
+    priceList: {
+      heading: 'Ceník',
+      tableHeading: 'Seznam ceníkových položek',
+      itemName: 'Název položky',
+      itemPrice: 'Cena položky',
+    }
   },
   general: {
     title: 'Název',

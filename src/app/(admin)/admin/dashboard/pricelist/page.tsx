@@ -14,12 +14,13 @@ import {useSettingContext} from '@/context/SettingsContext'
 import {DeleteDialog} from '@/app/(admin)/admin/ui/DeleteDialog'
 import {DotsVerticalIcon} from '@radix-ui/react-icons'
 import {PriceListItemDialog} from '@/app/(admin)/admin/dashboard/pricelist/ui/PriceListItemDialog'
+import {translation} from '@/locales/cs/translation'
 
 export default function Page() {
-  const {isDialogOpen, setIsDialogOpen, reloadPriceListData, priceListData} = usePriceListContext()
+  const {reloadPriceListData, priceListData} = usePriceListContext()
   const [isCreating, setIsCreating] = useState(false)
   const [priceListItem, setPriceListItem] = useState<PriceListRaw | null>(null)
-  const {isDeleteDialogOpen, setIsDeleteDialogOpen} = useSettingContext()
+  const {isDeleteDialogOpen, setIsDeleteDialogOpen, isDialogOpen, setIsDialogOpen} = useSettingContext()
   const [idForRemoval, setIdForRemoval] = useState<string>('')
 
   useEffect(() => {
@@ -60,19 +61,19 @@ export default function Page() {
 
   return (
     <>
-      <HeadNav title="Ceník">
-        <Button onClick={handleCreating}><PlusCircleIcon className="h-5 md:mr-4" />Přidat záznam</Button>
+      <HeadNav title={translation.admin.priceList.heading}>
+        <Button onClick={handleCreating}><PlusCircleIcon className="h-5 md:mr-4" />{translation.admin.buttons.add}</Button>
       </HeadNav>
       <Card className="w-[600px] m-4">
         <CardHeader>
-          <CardTitle>Seznam polozek</CardTitle>
+          <CardTitle>{translation.admin.priceList.tableHeading}</CardTitle>
         </CardHeader>
         <CardContent>
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead>Nazev polozky</TableHead>
-                <TableHead>Cena</TableHead>
+                <TableHead>{translation.admin.priceList.itemName}</TableHead>
+                <TableHead>{translation.admin.priceList.itemPrice}</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -88,13 +89,13 @@ export default function Page() {
                           className="flex h-8 w-8 p-0 data-[state=open]:bg-muted"
                         >
                           <DotsVerticalIcon className="h-4 w-4" />
-                          <span className="sr-only">Open menu</span>
+                          <span className="sr-only">{translation.admin.buttons.openMenu}</span>
                         </Button>
                       </DropdownMenuTrigger>
                       <DropdownMenuContent align="end" className="w-[160px] bg-white">
-                        {id && <DropdownMenuItem onClick={() => handleEdit(id)}>Edit</DropdownMenuItem>}
+                        {id && <DropdownMenuItem onClick={() => handleEdit(id)}>{translation.admin.buttons.edit}</DropdownMenuItem>}
                         {id && <DropdownMenuItem
-                          onClick={() => handleRemoval(id)}>Delete</DropdownMenuItem>}
+                          onClick={() => handleRemoval(id)}>{translation.admin.buttons.delete}</DropdownMenuItem>}
                       </DropdownMenuContent>
                     </DropdownMenu>
                   </TableCell>

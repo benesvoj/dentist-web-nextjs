@@ -18,6 +18,7 @@ import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage} from '@/
 import {Input} from '@/components/ui/input'
 import {addPriceListItem, fetchPriceList, updatePriceListItem} from '@/api/priceListApi'
 import {PriceListRaw} from '@/lib/definition'
+import {useSettingContext} from '@/context/SettingsContext'
 
 type PriceLIstItemDialogProps= {
   isCreating: boolean,
@@ -25,7 +26,8 @@ type PriceLIstItemDialogProps= {
 }
 
 export const PriceListItemDialog = ({isCreating, priceListItem}: PriceLIstItemDialogProps) => {
-  const {isDialogOpen, setIsDialogOpen, priceListData, reloadPriceListData} = usePriceListContext()
+  const {priceListData, reloadPriceListData} = usePriceListContext()
+  const {isDialogOpen, setIsDialogOpen} = useSettingContext()
 
 
   const maxValue = priceListData.length

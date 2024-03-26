@@ -4,8 +4,6 @@ import {PriceListRaw} from '@/lib/definition'
 import {fetchPriceList} from '@/api/priceListApi'
 
 interface PriceListContextProps {
-  isDialogOpen: boolean
-  setIsDialogOpen: (value: boolean) => void
   priceListData: PriceListRaw[]
   reloadPriceListData: () => void
 }
@@ -13,7 +11,6 @@ interface PriceListContextProps {
 const PriceListContext = createContext<PriceListContextProps | undefined>(undefined)
 
 export const PriceListProvider = ({children}: {children: ReactNode}) => {
-  const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false)
   const [priceListData, setPriceListData] = useState<PriceListRaw[]>([])
 
   const reloadPriceListData = async () => {
@@ -22,7 +19,7 @@ export const PriceListProvider = ({children}: {children: ReactNode}) => {
   }
 
   return (
-    <PriceListContext.Provider value={{isDialogOpen, setIsDialogOpen, priceListData, reloadPriceListData}}>
+    <PriceListContext.Provider value={{priceListData, reloadPriceListData}}>
       {children}
     </PriceListContext.Provider>
   )
