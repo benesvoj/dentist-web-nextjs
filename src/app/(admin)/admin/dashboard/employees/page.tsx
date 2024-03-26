@@ -11,34 +11,32 @@ import {useEmployeeContext} from '@/context/EmployeeContext'
 import {DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger} from '@/components/ui/dropdown-menu'
 import {DotsVerticalIcon} from '@radix-ui/react-icons'
 import {EditEmployeeDialog} from '@/app/(admin)/admin/dashboard/employees/ui/EditEmployeeDialog'
-import {fetchEmployeeById} from '@/api/employeeApi'
-import {DeleteEmployeeDialog} from '@/app/(admin)/admin/dashboard/employees/ui/DeleteEmployeeDialog'
+import {deleteEmployee, fetchEmployeeById} from '@/api/employeeApi'
+import {useSettingContext} from '@/context/SettingsContext'
+import {translation} from '@/locales/cs/translation'
+import {DeleteDialog} from '@/app/(admin)/admin/ui/DeleteDialog'
+import {useToast} from '@/components/ui/use-toast'
 
 export default function Page() {
   const {
     employeesData,
-    isDialogOpen,
-    setIsDialogOpen,
-    reloadData,
+    reloadData: loadEmployeesData,
     reloadPositionData,
     positionsData,
-    isDeleteDialogOpen,
-    setIsDeleteDialogOpen,
     isEditDialogOpen,
     setIsEditDialogOpen,
   } = useEmployeeContext()
-  const [selectedId, setSelectedId] = useState<string>('')
+  const {isDeleteDialogOpen, setIsDeleteDialogOpen, isDialogOpen, setIsDialogOpen} = useSettingContext()
+
+  const [selectedId, setSelectedId] = useState<string | null>(null)
   const [employee, setEmployee] = useState<Employee | null>(null)
 
+  const {toast} = useToast()
+
   useEffect(() => {
-    reloadData()
+    loadEmployeesData()
     reloadPositionData()
   }, [])
-
-  const handleDelete = (id: string) => {
-    setIsDeleteDialogOpen(!isDeleteDialogOpen)
-    setSelectedId(id)
-  }
 
   const fetchEmployee = async (id: string) => {
     setEmployee(await fetchEmployeeById(id))
@@ -49,16 +47,41 @@ export default function Page() {
     fetchEmployee(id)
   }
 
+  const handleDelete = (id: string) => {
+    setIsDeleteDialogOpen(!isDeleteDialogOpen)
+    setSelectedId(id)
+  }
+
+  const handleConfirmedRemoval = () => {
+
+    if (!selectedId) {
+      throw new Error('No ID for removal.')
+    }
+
+    deleteEmployee(selectedId)
+      .then(() => {
+        loadEmployeesData()
+        setSelectedId(null)
+        setIsDeleteDialogOpen(!isDeleteDialogOpen)
+        toast({
+          title: translation.admin.employees.toast.employeeDeleted,
+          description: translation.admin.employees.toast.employeeDeletedDescription,
+        })
+      })
+      .catch((error) => {
+        console.error('Failed to delete employee:', error)
+        throw new Error('Failed to delete employee.')
+      })
+  }
+
   return (
     <>
-      <HeadNav title="Seznam zamestnancu a jejich detail">
-        <Button onClick={() => setIsDialogOpen(!isDialogOpen)}><PlusCircleIcon className="h-5 md:mr-4" /> Add
-          new</Button>
+      <HeadNav title={translation.admin.employees.heading}>
+        <Button onClick={() => setIsDialogOpen(!isDialogOpen)}><PlusCircleIcon className="h-5 md:mr-4" />{translation.admin.buttons.add}</Button>
       </HeadNav>
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead>ID</TableHead>
             <TableHead>Celé jméno</TableHead>
             <TableHead>Pozice</TableHead>
           </TableRow>
@@ -66,7 +89,6 @@ export default function Page() {
         <TableBody>
           {employeesData.map(({id, titleBefore, firstName, lastName, titleAfter, position}: Employee) => (
             <TableRow key={id}>
-              <TableCell>{id}</TableCell>
               <TableCell>{titleBefore} {firstName} {lastName} {titleAfter}</TableCell>
               <TableCell>
                 {positionsData.find(({value}) => value === position)?.label || position}
@@ -79,14 +101,14 @@ export default function Page() {
                       className="flex h-8 w-8 p-0 data-[state=open]:bg-muted"
                     >
                       <DotsVerticalIcon className="h-4 w-4" />
-                      <span className="sr-only">Open menu</span>
+                      <span className="sr-only">{translation.admin.buttons.openMenu}</span>
                     </Button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="end" className="w-[160px] bg-white">
                     {/*TODO: add zkusenosti*/}
-                    <DropdownMenuItem>Pridat zkusenost</DropdownMenuItem>
-                    {id && <DropdownMenuItem onClick={() => handleEdit(id)}>Edit</DropdownMenuItem>}
-                    {id && <DropdownMenuItem onClick={() => handleDelete(id)}>Delete</DropdownMenuItem>}
+                    <DropdownMenuItem>{translation.admin.employees.buttons.addExperience}</DropdownMenuItem>
+                    {id && <DropdownMenuItem onClick={() => handleEdit(id)}>{translation.admin.buttons.edit}</DropdownMenuItem>}
+                    {id && <DropdownMenuItem onClick={() => handleDelete(id)}>{translation.admin.buttons.delete}</DropdownMenuItem>}
                   </DropdownMenuContent>
                 </DropdownMenu>
               </TableCell>
@@ -95,7 +117,7 @@ export default function Page() {
         </TableBody>
       </Table>
       {isDialogOpen && <NewEmployeeDialog />}
-      {isDeleteDialogOpen && <DeleteEmployeeDialog id={selectedId} />}
+      {isDeleteDialogOpen && <DeleteDialog handleConfirmedRemoval={handleConfirmedRemoval} />}
       {isEditDialogOpen && employee && <EditEmployeeDialog employee={employee} />}
     </>
   )

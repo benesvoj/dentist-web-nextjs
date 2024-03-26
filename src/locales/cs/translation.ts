@@ -72,7 +72,17 @@ export const translation = {
     },
     officeHours: {
       title: 'Ordinační doba',
-    }
+    },
+    employees: {
+      heading: 'Seznam zaměstnanců a jejich detail',
+      buttons: {
+        addExperience: 'Přidat zkušenost',
+      },
+      toast: {
+        employeeDeleted: 'Zaměstnanec byl smazán',
+        employeeDeletedDescription: 'Zaměstnanec byl úspěšně smazán.',
+      },
+    },
   },
   general: {
     title: 'Název',
@@ -85,6 +95,7 @@ export const translation = {
     email: 'Email',
     emailDescription: 'Email, na který budou zasílány dotazy z webu',
     phone: 'Telefon',
+    password: 'Heslo',
     webTitle: 'Název webu',
     webTitleDescription: 'Název webu, který bude zobrazen v hlavičce',
     webSubtitle: 'Popis webu',
@@ -92,6 +103,7 @@ export const translation = {
     webUrl: 'URL webu',
     returnBackOnWeb: 'Vrátit se zpět na web',
     login: 'Přihlášení',
+    logout: 'Odhlášení',
     weekdays: {
       monday: 'Pondělí',
       tuesday: 'Úterý',

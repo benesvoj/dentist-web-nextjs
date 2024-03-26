@@ -30,7 +30,7 @@ export default function Page() {
               className="mb-3 mt-5 block text-xs font-medium text-gray-900"
               htmlFor="email"
             >
-              Email
+              {translation.general.email}
             </label>
             <div className="relative">
               <input
@@ -50,7 +50,7 @@ export default function Page() {
               className="mb-3 mt-5 block text-xs font-medium text-gray-900"
               htmlFor="password"
             >
-              Password
+              {translation.general.password}
             </label>
             <div className="relative">
               <input

@@ -17,9 +17,11 @@ import {addEmployee} from '@/api/employeeApi'
 import {useEmployeeContext} from '@/context/EmployeeContext'
 import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from '@/components/ui/select'
 import {Textarea} from '@/components/ui/textarea'
+import {useSettingContext} from '@/context/SettingsContext'
 
 export const NewEmployeeDialog = () => {
-  const {isDialogOpen, setIsDialogOpen, reloadData, positionsData} = useEmployeeContext()
+  const {reloadData, positionsData} = useEmployeeContext()
+  const {isDialogOpen, setIsDialogOpen} = useSettingContext()
 
   const form = useForm<z.infer<typeof schema>>({
     resolver: zodResolver(schema),
