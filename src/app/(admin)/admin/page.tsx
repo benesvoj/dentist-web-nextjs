@@ -1,7 +1,6 @@
 'use client'
 
 import './ui/styles.css'
-import {FormInput} from '@/app/(admin)/admin/ui/FormInput'
 import {ButtonGroup} from '@/app/ui/ButtonGroup/ButtonGroup'
 import {Button} from '@/app/ui/Button/Button'
 import {useRouter} from 'next/navigation'
