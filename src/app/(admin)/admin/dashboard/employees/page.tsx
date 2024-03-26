@@ -82,8 +82,8 @@ export default function Page() {
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead>Celé jméno</TableHead>
-            <TableHead>Pozice</TableHead>
+            <TableHead>{translation.admin.employees.table.fullName}</TableHead>
+            <TableHead>{translation.admin.employees.table.position}</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>

@@ -160,7 +160,7 @@ export const CooperationItemDialog = ({isCreating, cooperationItem}: Cooperation
                 <Select onValueChange={field.onChange} defaultValue={field.value}>
                   <FormControl>
                     <SelectTrigger>
-                      <SelectValue placeholder="Vyberte zamereni" />
+                      <SelectValue placeholder={translation.admin.cooperation.selectCooperation} />
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
@@ -169,10 +169,6 @@ export const CooperationItemDialog = ({isCreating, cooperationItem}: Cooperation
                     ))}
                   </SelectContent>
                 </Select>
-                <FormDescription>
-                  You can manage email addresses in your
-                </FormDescription>
-                <FormMessage />
                 <FormMessage />
               </FormItem>
             )} />

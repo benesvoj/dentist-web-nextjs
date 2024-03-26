@@ -8,9 +8,11 @@ import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from '@/c
 import {useCooperationContext} from '@/context/CooperationContext'
 import {NewCooperationTypeDialog} from '@/app/(admin)/admin/dashboard/settings/ui/NewCooperationTypeDialog'
 import {translation} from '@/locales/cs/translation'
+import {useSettingContext} from '@/context/SettingsContext'
 
 export const CooperationTypeCard = () => {
-  const {loadCooperationTypes: loadData, cooperationTypes: data, isDialogOpen, setIsDialogOpen} = useCooperationContext()
+  const {loadCooperationTypes: loadData, cooperationTypes: data} = useCooperationContext()
+  const {isDialogOpen, setIsDialogOpen}  = useSettingContext()
 
   useEffect(() => {
     loadData()

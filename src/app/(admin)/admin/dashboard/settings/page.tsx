@@ -19,7 +19,7 @@ export default function Page() {
 
   return (
     <>
-      <HeadNav title="Nastaveni" />
+      <HeadNav title={translation.admin.settings.title} />
       <div className="m-4">
         <Tabs defaultValue="general" className="width-[400px]">
           <TabsList>

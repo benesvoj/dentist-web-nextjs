@@ -15,9 +15,12 @@ import {z} from 'zod'
 import {zodResolver} from '@hookform/resolvers/zod'
 import {useEmployeeContext} from '@/context/EmployeeContext'
 import {addEmployeePosition} from '@/api/employeeApi'
+import {useSettingContext} from '@/context/SettingsContext'
+import {translation} from '@/locales/cs/translation'
 
 export const NewPositionTypeDialog = () => {
-  const {isDialogOpen, setIsDialogOpen, reloadPositionData} = useEmployeeContext()
+  const {reloadPositionData} = useEmployeeContext()
+  const {isDialogOpen, setIsDialogOpen} = useSettingContext()
 
   const form = useForm<z.infer<typeof schema>>({
     resolver: zodResolver(schema),
@@ -41,15 +44,15 @@ export const NewPositionTypeDialog = () => {
     <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
       <DialogContent className="bg-white">
         <DialogHeader>
-          <DialogTitle>Nova pracovni pozice</DialogTitle>
-          <DialogDescription>Vyplnte povinna pole</DialogDescription>
+          <DialogTitle>{translation.admin.settings.positionTypes.dialog.title}</DialogTitle>
+          <DialogDescription>{translation.admin.settings.positionTypes.dialog.description}</DialogDescription>
         </DialogHeader>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
             <FormField name="value" control={form.control} render={({field}) => (
               <FormItem>
                 <FormLabel>
-                  Kód
+                  {translation.admin.settings.positionTypes.dialog.code}
                 </FormLabel>
                 <FormControl>
                   <Input {...field} />
@@ -59,7 +62,7 @@ export const NewPositionTypeDialog = () => {
             <FormField name="label" control={form.control} render={({field}) => (
               <FormItem>
                 <FormLabel>
-                  Název
+                  {translation.admin.settings.positionTypes.dialog.name}
                 </FormLabel>
                 <FormControl>
                   <Input {...field} />
@@ -69,10 +72,10 @@ export const NewPositionTypeDialog = () => {
             <DialogFooter className="sm:justify-end">
               <DialogClose asChild>
                 <Button type="button" variant="secondary">
-                  Close
+                  {translation.admin.buttons.cancel}
                 </Button>
               </DialogClose>
-              <Button type="submit" variant="default">Potvrdit</Button>
+              <Button type="submit" variant="default">{translation.admin.buttons.save}</Button>
             </DialogFooter>
           </form>
         </Form>

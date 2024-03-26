@@ -19,6 +19,7 @@ import {Input} from '@/components/ui/input'
 import {addPriceListItem, fetchPriceList, updatePriceListItem} from '@/api/priceListApi'
 import {PriceListRaw} from '@/lib/definition'
 import {useSettingContext} from '@/context/SettingsContext'
+import {translation} from '@/locales/cs/translation'
 
 type PriceLIstItemDialogProps= {
   isCreating: boolean,
@@ -73,12 +74,15 @@ export const PriceListItemDialog = ({isCreating, priceListItem}: PriceLIstItemDi
     )
   }
 
+  const heading = isCreating ? translation.admin.priceList.dialog.newPriceListItem : translation.admin.priceList.dialog.editPriceListItem
+
   return (
     <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
       <DialogContent className="bg-white">
         <DialogHeader>
-          <DialogTitle>{isCreating ? 'Nova polozka' : 'Editace polozky'} ceniku</DialogTitle>
-          <DialogDescription>Vyplnte povinna pole</DialogDescription>
+          <DialogTitle>{heading}</DialogTitle>
+          <DialogDescription>{translation.admin.priceList.dialog.description}
+          </DialogDescription>
         </DialogHeader>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
@@ -111,9 +115,9 @@ export const PriceListItemDialog = ({isCreating, priceListItem}: PriceLIstItemDi
             )} />
             <DialogFooter>
               <DialogClose asChild>
-                <Button variant="secondary">Cancel</Button>
+                <Button variant="secondary">{translation.admin.buttons.cancel}</Button>
               </DialogClose>
-              <Button type="submit">Save</Button>
+              <Button type="submit">{translation.admin.buttons.save}</Button>
             </DialogFooter>
           </form>
         </Form>

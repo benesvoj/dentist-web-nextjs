@@ -80,11 +80,13 @@ export const ServiceDialog = ({isCreating, serviceItem}: ServiceDialogProps) => 
     )
   }
 
+  const dialogTitle = isCreating ? translation.admin.dialog.newItem : translation.admin.dialog.editItem
+
   return (
     <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
       <DialogContent className="bg-white">
         <DialogHeader>
-          <DialogTitle>{isCreating ? translation.admin.dialog.newItem : translation.admin.dialog.editItem}</DialogTitle>
+          <DialogTitle>{dialogTitle}</DialogTitle>
           <DialogDescription>{translation.admin.dialog.description}</DialogDescription>
         </DialogHeader>
         <Form {...form}>

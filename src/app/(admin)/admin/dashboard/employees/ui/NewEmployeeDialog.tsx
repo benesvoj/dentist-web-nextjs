@@ -18,6 +18,7 @@ import {useEmployeeContext} from '@/context/EmployeeContext'
 import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from '@/components/ui/select'
 import {Textarea} from '@/components/ui/textarea'
 import {useSettingContext} from '@/context/SettingsContext'
+import {translation} from '@/locales/cs/translation'
 
 export const NewEmployeeDialog = () => {
   const {reloadData, positionsData} = useEmployeeContext()
@@ -53,15 +54,15 @@ export const NewEmployeeDialog = () => {
     <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
       <DialogContent className="bg-white">
         <DialogHeader>
-          <DialogTitle>Novy zamestanec</DialogTitle>
-          <DialogDescription>Vyplnte povinna pole</DialogDescription>
+          <DialogTitle>{translation.admin.employees.dialog.newEmployee}</DialogTitle>
+          <DialogDescription>{translation.admin.employees.dialog.description}</DialogDescription>
         </DialogHeader>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
             <FormField name="titleBefore" control={form.control} render={({field}) => (
               <FormItem>
                 <FormLabel>
-                  Titul pred
+                  {translation.admin.employees.dialog.titleBefore}
                 </FormLabel>
                 <FormControl>
                   <Input {...field} />
@@ -72,7 +73,7 @@ export const NewEmployeeDialog = () => {
             <FormField name="firstName" control={form.control} render={({field}) => (
               <FormItem>
                 <FormLabel>
-                  Jmeno
+                  {translation.admin.employees.dialog.firstName}
                 </FormLabel>
                 <FormControl>
                   <Input {...field} />
@@ -83,7 +84,7 @@ export const NewEmployeeDialog = () => {
             <FormField name="lastName" control={form.control} render={({field}) => (
               <FormItem>
                 <FormLabel>
-                  Prijmeni
+                  {translation.admin.employees.dialog.lastName}
                 </FormLabel>
                 <FormControl>
                   <Input {...field} />
@@ -94,7 +95,7 @@ export const NewEmployeeDialog = () => {
             <FormField name="titleAfter" control={form.control} render={({field}) => (
               <FormItem>
                 <FormLabel>
-                  Titul za
+                  {translation.admin.employees.dialog.titleAfter}
                 </FormLabel>
                 <FormControl>
                   <Input {...field} />
@@ -105,12 +106,12 @@ export const NewEmployeeDialog = () => {
             <FormField name="position" control={form.control} render={({field}) => (
               <FormItem>
                 <FormLabel>
-                  Pozice
+                  {translation.admin.employees.dialog.position}
                 </FormLabel>
                 <Select onValueChange={field.onChange} defaultValue={field.value}>
                   <FormControl>
                     <SelectTrigger>
-                      <SelectValue placeholder="Vyberte pozici" />
+                      <SelectValue placeholder={translation.admin.employees.dialog.selectPosition} />
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent className="bg-white">
@@ -125,7 +126,7 @@ export const NewEmployeeDialog = () => {
             <FormField name="note" control={form.control} render={({field}) => (
               <FormItem>
                 <FormLabel>
-                  Poznámka
+                  {translation.admin.employees.dialog.note}
                 </FormLabel>
                 <FormControl>
                   <Textarea {...field} />
@@ -136,10 +137,10 @@ export const NewEmployeeDialog = () => {
             <DialogFooter className="sm:justify-end">
               <DialogClose asChild>
                 <Button type="button" variant="secondary">
-                  Close
+                  {translation.admin.buttons.cancel}
                 </Button>
               </DialogClose>
-              <Button type="submit">Potvrdit</Button>
+              <Button type="submit">{translation.admin.buttons.save}</Button>
             </DialogFooter>
           </form>
         </Form>

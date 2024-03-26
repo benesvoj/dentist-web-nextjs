@@ -18,9 +18,11 @@ import {addEmployeePosition} from '@/api/employeeApi'
 import {useCooperationContext} from '@/context/CooperationContext'
 import {addCooperationType} from '@/api/cooperationApi'
 import {translation} from '@/locales/cs/translation'
+import {useSettingContext} from '@/context/SettingsContext'
 
 export const NewCooperationTypeDialog = () => {
-  const {isDialogOpen, setIsDialogOpen, loadCooperationTypes} = useCooperationContext()
+  const {loadCooperationTypes} = useCooperationContext()
+  const {isDialogOpen, setIsDialogOpen} = useSettingContext()
 
   const form = useForm<z.infer<typeof schema>>({
     resolver: zodResolver(schema),

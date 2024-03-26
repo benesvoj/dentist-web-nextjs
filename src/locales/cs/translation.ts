@@ -29,8 +29,10 @@ export const translation = {
     cooperation: {
       heading: 'Seznam spoluprací a jejich detail',
       cooperationType: 'Typ spolupráce',
+      selectCooperation: 'Vyberte typ spolupráce',
     },
     settings: {
+      title: 'Nastavení',
       general: {
         title: 'Obecné nastavení',
         titleShort: 'Obecné',
@@ -45,6 +47,18 @@ export const translation = {
           nameShort: 'Zkrácený název',
         },
       },
+      positionTypes: {
+        title: 'Typy pracovních pozic',
+        description: 'Popis',
+        code: 'Kód',
+        name: 'Název',
+        dialog: {
+          title: 'Nový typ pozice',
+          description: 'Vyplňte formulář pro vytvoření nového typu pozice',
+          code: 'Kód',
+          name: 'Název',
+        }
+      }
     },
     dashboard: {
       title: 'Dashboard',
@@ -75,8 +89,24 @@ export const translation = {
     },
     employees: {
       heading: 'Seznam zaměstnanců a jejich detail',
+      table: {
+        fullName: 'Celé jméno',
+        position: 'Pozice',
+      },
       buttons: {
         addExperience: 'Přidat zkušenost',
+      },
+      dialog: {
+        selectPosition: 'Vyberte pozici',
+        newEmployee: 'Nový zaměstnanec',
+        editEmployee: 'Editace zaměstnance',
+        description: 'Vyplňte formulář pro vytvoření nebo úpravu zaměstnance',
+        titleBefore: 'Titul před',
+        firstName: 'Jméno',
+        lastName: 'Příjmení',
+        titleAfter: 'Titul za',
+        position: 'Pozice',
+        note: 'Poznámka',
       },
       toast: {
         employeeDeleted: 'Zaměstnanec byl smazán',
@@ -88,6 +118,11 @@ export const translation = {
       tableHeading: 'Seznam ceníkových položek',
       itemName: 'Název položky',
       itemPrice: 'Cena položky',
+      dialog:{
+      newPriceListItem: 'Nová ceníková položka',
+        editPriceListItem: 'Editace ceníkové položky',
+        description: 'Vyplňte formulář pro vytvoření nebo úpravu ceníkové položky',
+      }
     }
   },
   general: {
